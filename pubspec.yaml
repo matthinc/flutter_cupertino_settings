@@ -1,8 +1,8 @@
 name: flutter_cupertino_settings
 description: Flutter widget to create an iOS settings-table (static TableView).
-version: 0.0.2
+version: 0.0.4
 author: Matthias Rupp <matthias.rupp@posteo.de>
-homepage: https://github.com/matthinc/FlutterCupertinoSettings
+homepage: https://github.com/matthinc/flutter_cupertino_settings
 
 dependencies:
   flutter:
