@@ -1,5 +1,7 @@
 # flutter_cupertino_settings
 
+![Pub badge](https://img.shields.io/pub/v/flutter_cupertino_settings.svg)  ![](https://img.shields.io/github/license/matthinc/flutter_cupertino_settings.svg)
+
 A Flutter widget to create an iOS settings-table (static TableView).
 
 [Get from Pub](https://pub.dartlang.org/packages/flutter_cupertino_settings#-installing-tab-)
@@ -8,7 +10,7 @@ A Flutter widget to create an iOS settings-table (static TableView).
 - [ ] Support for icons
 - [ ] Dynamic lists
 - [ ] Item selection
-- [ ] Button cells
+- [x] Button cells
 
 ```dart
 new CupertinoSettings(<Widget>[

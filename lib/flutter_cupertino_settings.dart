@@ -11,6 +11,7 @@ const CS_HEADER_TEXT_COLOR = Colors.black54;
 const CS_ITEM_PADDING = const EdgeInsets.only(left: 10.0, right: 10.0);
 const CS_HEADER_FONT_SIZE = 14.0;
 const CS_ITEM_NAME_SIZE = 16.0;
+const CS_BUTTON_FONT_SIZE = CS_ITEM_NAME_SIZE;
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
@@ -71,4 +72,42 @@ class CSControl extends StatelessWidget {
       ),
     );
   }
+}
+
+class CSButton extends StatelessWidget {
+  final CSButtonType type;
+  final String text;
+  final VoidCallback pressed;
+  CSButton(this.type, this.text, this.pressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        height: CS_ITEM_HEIGHT,
+        padding: CS_ITEM_PADDING,
+        alignment: type.alignment,
+        decoration: new BoxDecoration(
+          color: Colors.white,
+          border: new Border(
+              bottom: new BorderSide(color: CS_BORDER_COLOR, width: 1.0)
+          ),
+        ),
+        child: new CupertinoButton(
+            padding: EdgeInsets.zero,
+            child: new Text(text, style: new TextStyle(color: type.color, fontSize: CS_BUTTON_FONT_SIZE)),
+            onPressed: pressed
+        )
+    );
+  }
+}
+
+class CSButtonType {
+  static const DESTRUCTIVE = const CSButtonType(Colors.red, AlignmentDirectional.center);
+  static const DEFAULT = const CSButtonType(Colors.blue, AlignmentDirectional.centerStart);
+  static const DEFAULT_CENTER = const CSButtonType(Colors.blue, AlignmentDirectional.center);
+
+  final Color color;
+  final AlignmentGeometry alignment;
+
+  const CSButtonType(this.color, this.alignment);
 }
