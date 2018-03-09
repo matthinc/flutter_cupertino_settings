@@ -28,4 +28,4 @@ new CupertinoSettings(<Widget>[
 ]);
 ```
 
-![](http://abload.de/img/screenshotaprlf.png)
+![](http://abload.de/img/untitled5oqr2.png)
