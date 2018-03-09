@@ -22,6 +22,9 @@ new CupertinoSettings(<Widget>[
     new CSHeader('Extra'),
     new CSControl('Version', new Text('1.0.0')),
     new CSControl('Author', new Text('Matthias Rupp')),
+    new CSButton(CSButtonType.DEFAULT, "Licenses", (){}),
+    new CSHeader(),
+    new CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", (){})
 ]);
 ```
 
