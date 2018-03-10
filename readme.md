@@ -11,6 +11,7 @@ A Flutter widget to create an iOS settings-table (static TableView).
 - [ ] Dynamic lists
 - [ ] Item selection
 - [x] Button cells
+- [ ] Full width controls
 
 ```dart
 new CupertinoSettings(<Widget>[
