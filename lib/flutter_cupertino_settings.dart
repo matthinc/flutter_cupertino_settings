@@ -28,6 +28,8 @@ class CupertinoSettings extends StatelessWidget {
   }
 }
 
+/// This widgets is used as a grouping separator.
+/// The [title] attribute is optional.
 class CSHeader extends StatelessWidget {
   final String title;
   CSHeader([this.title = '']);
@@ -47,60 +49,72 @@ class CSHeader extends StatelessWidget {
   }
 }
 
-class CSControl extends StatelessWidget {
-  final String name;
+/// Used to display a widget of any kind in [CupertinoSettings]
+/// It provices the correct height, color and border to create the intended look
+/// The optional [alignment] attribute allows to specify the aligment inside the container
+class CSWidget extends StatelessWidget {
   final Widget widget;
-  CSControl(this.name, this.widget);
+  final AlignmentGeometry alignment;
+  CSWidget(this.widget, {this.alignment});
 
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: CS_ITEM_HEIGHT,
-      padding: CS_ITEM_PADDING,
-      decoration: new BoxDecoration(
-        color: Colors.white,
-        border: new Border(
-            bottom: new BorderSide(color: CS_BORDER_COLOR, width: 1.0)
-        ),
-      ),
-      child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          new Text(name, style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
-          widget
-        ],
-      ),
-    );
-  }
-}
-
-class CSButton extends StatelessWidget {
-  final CSButtonType type;
-  final String text;
-  final VoidCallback pressed;
-  CSButton(this.type, this.text, this.pressed);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
+        alignment: alignment,
         height: CS_ITEM_HEIGHT,
         padding: CS_ITEM_PADDING,
-        alignment: type.alignment,
         decoration: new BoxDecoration(
           color: Colors.white,
           border: new Border(
               bottom: new BorderSide(color: CS_BORDER_COLOR, width: 1.0)
           ),
         ),
-        child: new CupertinoButton(
-            padding: EdgeInsets.zero,
-            child: new Text(text, style: new TextStyle(color: type.color, fontSize: CS_BUTTON_FONT_SIZE)),
-            onPressed: pressed
-        )
+        child: widget
     );
   }
+
 }
 
+/// A title [name] in combination with any widget [contentWidget]
+/// extends [CSWidget]
+/// Provides the correct paddings and text properties
+class CSControl extends CSWidget {
+  final String name;
+  final Widget contentWidget;
+
+  CSControl(this.name, this.contentWidget) : super(
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          new Text(name, style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
+          contentWidget
+        ],
+      )
+  );
+}
+
+/// A button-cell inside [CupertinoSettings]
+/// 3 different types are available (they only affect the design):
+/// [CSButtonType.DESTRUCTIVE] Red and centered
+/// [CSButtonType.DEFAULT] Blue and left aligned
+/// [CSButtonType.DEFAULT_CENTER] Blue and centered
+/// Provides the correct paddings and text properties
+class CSButton extends CSWidget {
+  final CSButtonType type;
+  final String text;
+  final VoidCallback pressed;
+  CSButton(this.type, this.text, this.pressed) : super(
+      new CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: new Text(text, style: new TextStyle(color: type.color, fontSize: CS_BUTTON_FONT_SIZE)),
+          onPressed: pressed
+      ),
+      alignment: type.alignment
+  );
+}
+
+/// Defines different types for [CSButton]
+/// Specifies color and alignment
 class CSButtonType {
   static const DESTRUCTIVE = const CSButtonType(Colors.red, AlignmentDirectional.center);
   static const DEFAULT = const CSButtonType(Colors.blue, AlignmentDirectional.centerStart);
