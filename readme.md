@@ -16,6 +16,9 @@ A Flutter widget to create an iOS settings-table (static TableView).
 
 
 ```dart
+
+import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
+
 new CupertinoSettings(<Widget>[
     new CSHeader('Controls'),
     new CSWidget(new CupertinoSlider(value: 0.5)),
