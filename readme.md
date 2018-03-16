@@ -6,9 +6,7 @@ A Flutter widget to create an iOS settings-table (static TableView).
 
 [Get from Pub](https://pub.dartlang.org/packages/flutter_cupertino_settings#-installing-tab-)
 
-- [x] Full width controls (CSWidget)
-- [x] Basic items (CSHeader & CSControl)
-- [x] Button cells (CSButton)
+- [x] Basic items (CSHeader, CSWidget, CSControl, CSButton, CSLink)
 - [ ] Support for icons
 - [ ] Dynamic lists
 - [ ] Item selection
@@ -25,6 +23,7 @@ new CupertinoSettings(<Widget>[
     new CSControl('Auto brightness', new CupertinoSwitch(value: true)),
     new CSHeader(),
     new CSControl('Loading...', new CupertinoActivityIndicator()),
+    new CSLink('Miscellaneous', (){}),
     new CSHeader('Extra'),
     new CSControl('Version', new Text('1.0.0')),
     new CSControl('Author', new Text('Matthias Rupp')),
@@ -34,4 +33,4 @@ new CupertinoSettings(<Widget>[
 ]);
 ```
 
-![](http://abload.de/img/untitleda6ogg.png)
+![](http://abload.de/img/img_4b0c67427bc6-1_ipinszw.png)

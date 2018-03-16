@@ -55,13 +55,15 @@ class CSHeader extends StatelessWidget {
 class CSWidget extends StatelessWidget {
   final Widget widget;
   final AlignmentGeometry alignment;
-  CSWidget(this.widget, {this.alignment});
+  final double height;
+
+  CSWidget(this.widget, {this.alignment, this.height = CS_ITEM_HEIGHT});
 
   @override
   Widget build(BuildContext context) {
     return new Container(
         alignment: alignment,
-        height: CS_ITEM_HEIGHT,
+        height: height,
         padding: CS_ITEM_PADDING,
         decoration: new BoxDecoration(
           color: Colors.white,
@@ -99,18 +101,60 @@ class CSControl extends CSWidget {
 /// [CSButtonType.DEFAULT] Blue and left aligned
 /// [CSButtonType.DEFAULT_CENTER] Blue and centered
 /// Provides the correct paddings and text properties
+///
+/// It is quite complex:
+///
+/// -- Widget
+///   |- Flex
+///     |- Expand
+///       |- CupertinoButton
+///         |- Container        (<--- For text-alignment)
+///           |- Text
+///
+/// This "hack" is mandatory to archive that...
+/// 1) The button can be aligned
+/// 2) The entire row is touch-sensitive
 class CSButton extends CSWidget {
   final CSButtonType type;
   final String text;
   final VoidCallback pressed;
   CSButton(this.type, this.text, this.pressed) : super(
-      new CupertinoButton(
-          padding: EdgeInsets.zero,
-          child: new Text(text, style: new TextStyle(color: type.color, fontSize: CS_BUTTON_FONT_SIZE)),
-          onPressed: pressed
-      ),
-      alignment: type.alignment
+      new Flex(
+        direction: Axis.horizontal,
+        children: <Widget>[
+          new Expanded(
+            child: new CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: new Container(
+                alignment: type.alignment,
+                child: new Text(text, style: new TextStyle(color: type.color, fontSize: CS_BUTTON_FONT_SIZE)),
+              ),
+              onPressed: pressed,
+            ),
+          ),
+        ],
+      )
   );
+}
+
+/// Provides a button for navigation
+class CSLink extends CSWidget {
+  final String text;
+  final VoidCallback pressed;
+  CSLink(this.text, this.pressed) : super (
+    new CupertinoButton(
+        padding: EdgeInsets.zero,
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            new Text(text, style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
+            new Icon(Icons.keyboard_arrow_right, color: Colors.black26)
+          ],
+        ),
+        onPressed: pressed
+    ),
+  );
+
 }
 
 /// Defines different types for [CSButton]
