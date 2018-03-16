@@ -33,4 +33,4 @@ new CupertinoSettings(<Widget>[
 ]);
 ```
 
-![](http://abload.de/img/img_4b0c67427bc6-1_ipinszw.png)
+![](http://abload.de/img/untitledy1pyd.png)
