@@ -12,6 +12,8 @@ const CS_ITEM_PADDING = const EdgeInsets.only(left: 10.0, right: 10.0);
 const CS_HEADER_FONT_SIZE = 14.0;
 const CS_ITEM_NAME_SIZE = 16.0;
 const CS_BUTTON_FONT_SIZE = CS_ITEM_NAME_SIZE;
+const CS_ICON_PADDING = const EdgeInsets.only(right: 10.0);
+const CS_DEFAULT_STYLE = const CSWidgetStyle();
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
@@ -52,15 +54,33 @@ class CSHeader extends StatelessWidget {
 /// Used to display a widget of any kind in [CupertinoSettings]
 /// It provices the correct height, color and border to create the intended look
 /// The optional [alignment] attribute allows to specify the aligment inside the container
+/// The optional [style] attribute allows to specify a style (e.g. an Icon)
 class CSWidget extends StatelessWidget {
   final Widget widget;
   final AlignmentGeometry alignment;
   final double height;
+  final CSWidgetStyle style;
 
-  CSWidget(this.widget, {this.alignment, this.height = CS_ITEM_HEIGHT});
+  CSWidget(this.widget, {this.alignment, this.height = CS_ITEM_HEIGHT, this.style = CS_DEFAULT_STYLE});
 
   @override
   Widget build(BuildContext context) {
+
+    Widget child;
+
+    //style.icon
+    if (style.icon != null) {
+      child = new Row(children: <Widget>[
+        new Container(
+          child: style.icon,
+          padding: CS_ICON_PADDING,
+        ),
+        new Expanded(child: widget)
+      ],);
+    } else {
+      child = widget;
+    }
+
     return new Container(
         alignment: alignment,
         height: height,
@@ -71,7 +91,7 @@ class CSWidget extends StatelessWidget {
               bottom: new BorderSide(color: CS_BORDER_COLOR, width: 1.0)
           ),
         ),
-        child: widget
+        child: child
     );
   }
 
@@ -84,14 +104,15 @@ class CSControl extends CSWidget {
   final String name;
   final Widget contentWidget;
 
-  CSControl(this.name, this.contentWidget) : super(
+  CSControl(this.name, this.contentWidget, {CSWidgetStyle style = CS_DEFAULT_STYLE}) : super(
       new Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           new Text(name, style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
           contentWidget
         ],
-      )
+      ),
+      style: style
   );
 }
 
@@ -118,7 +139,7 @@ class CSButton extends CSWidget {
   final CSButtonType type;
   final String text;
   final VoidCallback pressed;
-  CSButton(this.type, this.text, this.pressed) : super(
+  CSButton(this.type, this.text, this.pressed, {CSWidgetStyle style = CS_DEFAULT_STYLE}) : super(
       new Flex(
         direction: Axis.horizontal,
         children: <Widget>[
@@ -133,7 +154,8 @@ class CSButton extends CSWidget {
             ),
           ),
         ],
-      )
+      ),
+      style: style
   );
 }
 
@@ -141,20 +163,27 @@ class CSButton extends CSWidget {
 class CSLink extends CSWidget {
   final String text;
   final VoidCallback pressed;
-  CSLink(this.text, this.pressed) : super (
-    new CupertinoButton(
-        padding: EdgeInsets.zero,
-        child: new Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            new Text(text, style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
-            new Icon(Icons.keyboard_arrow_right, color: Colors.black26)
-          ],
-        ),
-        onPressed: pressed
-    ),
+  CSLink(this.text, this.pressed, {CSWidgetStyle style = CS_DEFAULT_STYLE}) : super (
+      new CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              new Text(text, style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
+              new Icon(Icons.keyboard_arrow_right, color: Colors.black26)
+            ],
+          ),
+          onPressed: pressed
+      ),
+      style: style
   );
 
+}
+
+/// Defines style attributes that can be applied to every [CSWidget]
+class CSWidgetStyle {
+  final Icon icon;
+  const CSWidgetStyle({this.icon});
 }
 
 /// Defines different types for [CSButton]
