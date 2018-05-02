@@ -14,6 +14,11 @@ const CS_ITEM_NAME_SIZE = 16.0;
 const CS_BUTTON_FONT_SIZE = CS_ITEM_NAME_SIZE;
 const CS_ICON_PADDING = const EdgeInsets.only(right: 10.0);
 const CS_DEFAULT_STYLE = const CSWidgetStyle();
+const CS_CHECK_COLOR = Colors.blue;
+const CS_CHECK_SIZE = 16.0;
+
+/// Event for [CSSelection]
+typedef void SelectionCallback(int selected);
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
@@ -76,7 +81,7 @@ class CSWidget extends StatelessWidget {
           padding: CS_ICON_PADDING,
         ),
         new Expanded(child: widget)
-      ],);
+      ]);
     } else {
       child = widget;
     }
@@ -177,6 +182,85 @@ class CSLink extends CSWidget {
       ),
       style: style
   );
+
+}
+
+/// A selection view
+/// Allows to select between multiple items
+/// Every item is represented by a String
+///
+/// If an item is selected, onSelected is called with its index
+///
+/// eg:
+/// items = ["hello","world","flutter"]
+/// select "world"
+///
+/// onSelected(1)
+class CSSelection extends StatefulWidget {
+
+  final List<String> items;
+  final SelectionCallback onSelected;
+  int currentSelection;
+
+  CSSelection(this.items, this.onSelected, {this.currentSelection = 0});
+
+  @override
+  State<StatefulWidget> createState() {
+    return new CSSelectionState(items, currentSelection, onSelected);
+  }
+
+}
+
+/// [State] for [CSSelection]
+class CSSelectionState extends State<CSSelection> {
+
+  int currentSelection;
+  final SelectionCallback onSelected;
+  final List<String> items;
+
+  CSSelectionState(this.items, this.currentSelection, this.onSelected);
+
+  @override
+  Widget build(BuildContext context) {
+
+    List<Widget> widgets = new List<Widget>();
+    for(int i = 0; i < items.length; i++) {
+      widgets.add(createItem(items[i],i));
+    }
+
+    return new Column(
+        children: widgets
+    );
+  }
+
+  Widget createItem(String name, int index) {
+    return new CSWidget(
+        new CupertinoButton(
+            onPressed: (){
+              if (index != this.currentSelection) {
+                setState(() {
+                  this.currentSelection = index;
+                });
+                onSelected(index);
+              }
+            },
+            pressedOpacity: 1.0,
+            child: new Row(
+              children: <Widget>[
+                new Expanded(
+                    child: new Text(
+                        name,
+                        style: new TextStyle(fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR))
+                ),
+                new Icon(Icons.check,
+                    color: (index == currentSelection ? CS_CHECK_COLOR : Colors.transparent),
+                    size: CS_CHECK_SIZE
+                )
+              ],
+            )
+        )
+    );
+  }
 
 }
 

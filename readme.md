@@ -8,8 +8,8 @@ A Flutter widget to create an iOS settings-table (static TableView).
 
 - [x] Basic items (CSHeader, CSWidget, CSControl, CSButton, CSLink)
 - [x] Support for icons
+- [x] Item selection
 - [ ] Dynamic lists
-- [ ] Item selection
 - [ ] Themes
 
 
@@ -23,19 +23,17 @@ CSWidgetStyle brightnessStyle = const CSWidgetStyle(
 );
 
 new CupertinoSettings(<Widget>[
-    new CSHeader('Controls'),
+    new CSHeader('Brightness'),
     new CSWidget(new CupertinoSlider(value: 0.5), style: brightnessStyle),
-    new CSControl('Auto brightness', new CupertinoSwitch(value: true), style: brightnessStyle),
+    new CSControl('Auto brightness', new CupertinoSwitch(value: true), style: brightnessStyle,),
+    new CSHeader('Selection'),
+    new CSSelection(['Day mode','Night mode'], (index) {print(index);}, currentSelection: 0),
     new CSHeader(),
     new CSControl('Loading...', new CupertinoActivityIndicator()),
-    new CSLink('Miscellaneous', (){}),
-    new CSHeader('Extra'),
-    new CSControl('Version', new Text('1.0.0')),
-    new CSControl('Author', new Text('Matthias Rupp')),
-    new CSButton(CSButtonType.DEFAULT, "Licenses", (){}),
+    new CSButton(CSButtonType.DEFAULT, "Licenses", (){ print("It works!"); }),
     new CSHeader(),
     new CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", (){})
 ]);
 ```
 
-![](http://abload.de/img/screenshotvgugp.png)
+![](https://abload.de/img/screenshot2018-05-02a00u3w.png)
