@@ -200,7 +200,7 @@ class CSSelection extends StatefulWidget {
 
   final List<String> items;
   final SelectionCallback onSelected;
-  int currentSelection;
+  final int currentSelection;
 
   CSSelection(this.items, this.onSelected, {this.currentSelection = 0});
 
