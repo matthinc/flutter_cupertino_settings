@@ -28,48 +28,51 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Cupertino Settings'),
         ),
-        body: CupertinoSettings(<Widget>[
-          CSHeader('Brightness'),
-          CSWidget(
-              new CupertinoSlider(
-                value: _slider,
-                onChanged: (double value) {
+        body: CupertinoSettings(
+          <Widget>[
+            CSHeader('Brightness'),
+            CSWidget(
+                new CupertinoSlider(
+                  value: _slider,
+                  onChanged: (double value) {
+                    setState(() {
+                      _slider = value;
+                    });
+                  },
+                ),
+                style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
+            CSControl(
+              'Auto brightness',
+              CupertinoSwitch(
+                value: _switch,
+                onChanged: (bool value) {
                   setState(() {
-                    _slider = value;
+                    _switch = value;
                   });
                 },
               ),
-              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
-          CSControl(
-            'Auto brightness',
-            CupertinoSwitch(
-              value: _switch,
-              onChanged: (bool value) {
+              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
+            ),
+            CSHeader('Selection'),
+            CSSelection(
+              ['Day mode', 'Night mode'],
+              (int value) {
                 setState(() {
-                  _switch = value;
+                  _index = value;
                 });
               },
+              currentSelection: _index,
             ),
-            style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
-          ),
-          CSHeader('Selection'),
-          CSSelection(
-            ['Day mode', 'Night mode'],
-            (int value) {
-              setState(() {
-                _index = value;
-              });
-            },
-            currentSelection: _index,
-          ),
-          CSHeader(""),
-          CSControl('Loading...', CupertinoActivityIndicator()),
-          CSButton(CSButtonType.DEFAULT, "Licenses", () {
-            print("It works!");
-          }),
-          CSHeader(""),
-          CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {})
-        ]),
+            CSHeader(""),
+            CSControl('Loading...', CupertinoActivityIndicator()),
+            CSButton(CSButtonType.DEFAULT, "Licenses", () {
+              print("It works!");
+            }),
+            CSHeader(""),
+            CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {}),
+          ],
+          shrinkWrap: false,
+        ),
       ),
     );
   }

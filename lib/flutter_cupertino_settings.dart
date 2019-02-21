@@ -28,15 +28,47 @@ typedef void SelectionCallback(int selected);
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
-  CupertinoSettings(this.items);
+  final bool shrinkWrap;
+
+  CupertinoSettings(
+    this.items, {
+    this.shrinkWrap = true,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (BuildContext context, int index) {
-        return items[index];
-      },
+    if (!shrinkWrap) {
+      return Container(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black12
+            : CupertinoColors.lightBackgroundGray,
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: shrinkWrap,
+                  itemCount: items.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return items[index];
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    return Container(
+      child: SafeArea(
+        child: ListView.builder(
+          shrinkWrap: shrinkWrap,
+          itemCount: items.length,
+          itemBuilder: (BuildContext context, int index) {
+            return items[index];
+          },
+        ),
+      ),
     );
   }
 }
