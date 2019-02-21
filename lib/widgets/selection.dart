@@ -38,13 +38,13 @@ class CSSelectionState extends State<CSSelection> {
   Widget build(BuildContext context) {
     final List<Widget> widgets = <Widget>[];
     for (int i = 0; i < items.length; i++) {
-      widgets.add(createItem(items[i], i));
+      widgets.add(createItem(context, items[i], i));
     }
 
     return Column(children: widgets);
   }
 
-  Widget createItem(String name, int index) {
+  Widget createItem(BuildContext context, String name, int index) {
     return CSWidget(new CupertinoButton(
         onPressed: () {
           if (index != currentSelection) {
@@ -59,13 +59,17 @@ class CSSelectionState extends State<CSSelection> {
                 child: Text(
               name,
               style: TextStyle(
-                color: CS_TEXT_COLOR,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : CS_TEXT_COLOR,
                 fontSize: widget.fontSize,
               ),
             )),
             Icon(Icons.check,
                 color: (index == currentSelection
-                    ? CS_CHECK_COLOR
+                    ? Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : CS_CHECK_COLOR
                     : Colors.transparent),
                 size: CS_CHECK_SIZE)
           ],

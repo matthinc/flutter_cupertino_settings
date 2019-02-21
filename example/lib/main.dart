@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 
 void main() => runApp(MyApp());
@@ -10,9 +11,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  CSWidgetStyle brightnessStyle = const CSWidgetStyle(
-      icon: const Icon(Icons.brightness_medium, color: Colors.black54));
-
   @override
   void initState() {
     super.initState();
@@ -25,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Cupertino Settings'),
@@ -41,7 +39,7 @@ class _MyAppState extends State<MyApp> {
                   });
                 },
               ),
-              style: brightnessStyle),
+              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
           CSControl(
             'Auto brightness',
             CupertinoSwitch(
@@ -52,7 +50,7 @@ class _MyAppState extends State<MyApp> {
                 });
               },
             ),
-            style: brightnessStyle,
+            style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
           ),
           CSHeader('Selection'),
           CSSelection(
@@ -64,12 +62,12 @@ class _MyAppState extends State<MyApp> {
             },
             currentSelection: _index,
           ),
-          CSHeader(),
+          CSHeader(""),
           CSControl('Loading...', CupertinoActivityIndicator()),
           CSButton(CSButtonType.DEFAULT, "Licenses", () {
             print("It works!");
           }),
-          CSHeader(),
+          CSHeader(""),
           CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {})
         ]),
       ),

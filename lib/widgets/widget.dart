@@ -10,10 +10,12 @@ class CSWidget extends StatelessWidget {
   final double height;
   final CSWidgetStyle style;
 
-  CSWidget(this.widget,
-      {this.alignment,
-      this.height = CS_ITEM_HEIGHT,
-      this.style = CS_DEFAULT_STYLE});
+  CSWidget(
+    this.widget, {
+    this.alignment,
+    this.height = CS_ITEM_HEIGHT,
+    this.style = CS_DEFAULT_STYLE,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,10 @@ class CSWidget extends StatelessWidget {
         alignment: alignment,
         height: height,
         padding: CS_ITEM_PADDING,
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? null
+              : Colors.white,
           border:
               Border(bottom: BorderSide(color: CS_BORDER_COLOR, width: 1.0)),
         ),
