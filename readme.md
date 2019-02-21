@@ -36,5 +36,7 @@ new CupertinoSettings(<Widget>[
 ```
 
 ![](https://abload.de/img/screenshot2018-05-02a00u3w.png)
-![](https://abload.de/img/dev87kbg.png)
+![](https://abload.de/img/dark3xk0b.png)
+![](https://abload.de/img/lightu5k1a.png)
 
+Dark theme & example by [AppleEducate](https://github.com/appleeducate)
