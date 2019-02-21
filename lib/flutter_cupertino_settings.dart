@@ -30,9 +30,9 @@ class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
 
-  CupertinoSettings(
-    this.items, {
-    this.shrinkWrap = true,
+  CupertinoSettings({
+    @required this.items,
+    this.shrinkWrap = false,
   });
 
   @override
@@ -60,6 +60,9 @@ class CupertinoSettings extends StatelessWidget {
       );
     }
     return Container(
+      color: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black12
+          : CupertinoColors.lightBackgroundGray,
       child: SafeArea(
         child: ListView.builder(
           shrinkWrap: shrinkWrap,

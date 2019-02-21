@@ -5,74 +5,75 @@ import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.light(),
+      home: HomeScreen(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+class HomeScreen extends StatefulWidget {
   @override
-  void initState() {
-    super.initState();
-  }
+  _HomeScreenState createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
   double _slider = 0.5;
   bool _switch = false;
   int _index = 0;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Cupertino Settings'),
-        ),
-        body: CupertinoSettings(
-          <Widget>[
-            CSHeader('Brightness'),
-            CSWidget(
-                new CupertinoSlider(
-                  value: _slider,
-                  onChanged: (double value) {
-                    setState(() {
-                      _slider = value;
-                    });
-                  },
-                ),
-                style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
-            CSControl(
-              'Auto brightness',
-              CupertinoSwitch(
-                value: _switch,
-                onChanged: (bool value) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cupertino Settings'),
+      ),
+      body: CupertinoSettings(
+        items: <Widget>[
+          CSHeader('Brightness'),
+          CSWidget(
+              new CupertinoSlider(
+                value: _slider,
+                onChanged: (double value) {
                   setState(() {
-                    _switch = value;
+                    _slider = value;
                   });
                 },
               ),
-              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
-            ),
-            CSHeader('Selection'),
-            CSSelection(
-              ['Day mode', 'Night mode'],
-              (int value) {
+              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
+          CSControl(
+            'Auto brightness',
+            CupertinoSwitch(
+              value: _switch,
+              onChanged: (bool value) {
                 setState(() {
-                  _index = value;
+                  _switch = value;
                 });
               },
-              currentSelection: _index,
             ),
-            CSHeader(""),
-            CSControl('Loading...', CupertinoActivityIndicator()),
-            CSButton(CSButtonType.DEFAULT, "Licenses", () {
-              print("It works!");
-            }),
-            CSHeader(""),
-            CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {}),
-          ],
-          shrinkWrap: false,
-        ),
+            style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
+          ),
+          CSHeader('Selection'),
+          CSSelection(
+            ['Day mode', 'Night mode'],
+            (int value) {
+              setState(() {
+                _index = value;
+              });
+            },
+            currentSelection: _index,
+          ),
+          CSHeader(""),
+          CSControl('Loading...', CupertinoActivityIndicator()),
+          CSButton(CSButtonType.DEFAULT, "Licenses", () {
+            print("It works!");
+          }),
+          CSHeader(""),
+          CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {}),
+        ],
       ),
     );
   }
