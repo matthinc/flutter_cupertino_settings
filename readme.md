@@ -9,9 +9,8 @@ A Flutter widget to create an iOS settings-table (static TableView).
 - [x] Basic items (CSHeader, CSWidget, CSControl, CSButton, CSLink)
 - [x] Support for icons
 - [x] Item selection
+- [X] Themes
 - [ ] Dynamic lists
-- [ ] Themes
-
 
 
 ```dart
