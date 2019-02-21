@@ -43,6 +43,7 @@ class CupertinoSettings extends StatelessWidget {
             ? Colors.black12
             : CupertinoColors.lightBackgroundGray,
         child: SafeArea(
+          bottom: false,
           child: Column(
             children: <Widget>[
               Expanded(
@@ -64,6 +65,7 @@ class CupertinoSettings extends StatelessWidget {
           ? Colors.black12
           : CupertinoColors.lightBackgroundGray,
       child: SafeArea(
+        bottom: false,
         child: ListView.builder(
           shrinkWrap: shrinkWrap,
           itemCount: items.length,
