@@ -10,7 +10,6 @@ A Flutter widget to create an iOS settings-table (static TableView).
 - [x] Support for icons
 - [x] Item selection
 - [X] Themes
-- [ ] Dynamic lists
 
 
 ```dart
