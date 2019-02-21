@@ -23,8 +23,11 @@ class CSButton extends CSWidget {
   final CSButtonType type;
   final String text;
   final VoidCallback pressed;
+  final double fontSize;
+
   CSButton(this.type, this.text, this.pressed,
-      {CSWidgetStyle style = CS_DEFAULT_STYLE})
+      {CSWidgetStyle style = CS_DEFAULT_STYLE,
+      this.fontSize = CS_HEADER_FONT_SIZE})
       : super(
             Flex(
               direction: Axis.horizontal,
@@ -35,9 +38,8 @@ class CSButton extends CSWidget {
                     child: Container(
                       alignment: type.alignment,
                       child: Text(text,
-                          style: TextStyle(
-                              color: type.color,
-                              fontSize: CS_BUTTON_FONT_SIZE)),
+                          style:
+                              TextStyle(color: type.color, fontSize: fontSize)),
                     ),
                     onPressed: pressed,
                   ),

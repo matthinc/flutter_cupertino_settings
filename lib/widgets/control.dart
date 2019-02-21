@@ -6,16 +6,20 @@ part of flutter_cupertino_settings;
 class CSControl extends CSWidget {
   final String name;
   final Widget contentWidget;
+  final double fontSize;
 
   CSControl(this.name, this.contentWidget,
-      {CSWidgetStyle style = CS_DEFAULT_STYLE})
+      {CSWidgetStyle style = CS_DEFAULT_STYLE,
+      this.fontSize = CS_HEADER_FONT_SIZE})
       : super(
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(name,
-                    style: const TextStyle(
-                        fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
+                    style: TextStyle(
+                      color: CS_TEXT_COLOR,
+                      fontSize: fontSize,
+                    )),
                 contentWidget
               ],
             ),

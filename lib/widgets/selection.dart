@@ -15,8 +15,10 @@ class CSSelection extends StatefulWidget {
   final List<String> items;
   final SelectionCallback onSelected;
   final int currentSelection;
+  final double fontSize;
 
-  CSSelection(this.items, this.onSelected, {this.currentSelection = 0});
+  CSSelection(this.items, this.onSelected,
+      {this.currentSelection = 0, this.fontSize = CS_HEADER_FONT_SIZE});
 
   @override
   State<StatefulWidget> createState() {
@@ -54,9 +56,13 @@ class CSSelectionState extends State<CSSelection> {
         child: Row(
           children: <Widget>[
             Expanded(
-                child: Text(name,
-                    style: const TextStyle(
-                        fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR))),
+                child: Text(
+              name,
+              style: TextStyle(
+                color: CS_TEXT_COLOR,
+                fontSize: widget.fontSize,
+              ),
+            )),
             Icon(Icons.check,
                 color: (index == currentSelection
                     ? CS_CHECK_COLOR

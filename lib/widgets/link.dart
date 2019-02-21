@@ -4,7 +4,11 @@ part of flutter_cupertino_settings;
 class CSLink extends CSWidget {
   final String text;
   final VoidCallback pressed;
-  CSLink(this.text, this.pressed, {CSWidgetStyle style = CS_DEFAULT_STYLE})
+  final double fontSize;
+
+  CSLink(this.text, this.pressed,
+      {CSWidgetStyle style = CS_DEFAULT_STYLE,
+      this.fontSize = CS_HEADER_FONT_SIZE})
       : super(
             CupertinoButton(
                 padding: EdgeInsets.zero,
@@ -12,8 +16,10 @@ class CSLink extends CSWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(text,
-                        style: const TextStyle(
-                            fontSize: CS_ITEM_NAME_SIZE, color: CS_TEXT_COLOR)),
+                        style: TextStyle(
+                          color: CS_TEXT_COLOR,
+                          fontSize: fontSize,
+                        )),
                     const Icon(Icons.keyboard_arrow_right,
                         color: Colors.black26)
                   ],
