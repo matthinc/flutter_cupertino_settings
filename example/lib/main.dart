@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             currentSelection: _index,
           ),
+          CSDescription('Using Night mode extends battery life on devices with OLED display'),
           CSHeader(""),
           CSControl('Loading...', CupertinoActivityIndicator()),
           CSButton(CSButtonType.DEFAULT, "Licenses", () {
