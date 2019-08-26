@@ -35,15 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
         items: <Widget>[
           CSHeader('Brightness'),
           CSWidget(
-              new CupertinoSlider(
-                value: _slider,
-                onChanged: (double value) {
-                  setState(() {
-                    _slider = value;
-                  });
-                },
-              ),
-              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
+            CupertinoSlider(
+              value: _slider,
+              onChanged: (double value) {
+                setState(() {
+                  _slider = value;
+                });
+              },
+            ),
+            style: CSWidgetStyle(
+              icon: Icon(FontAwesomeIcons.sun),
+            ),
+          ),
           CSControl(
             'Auto brightness',
             CupertinoSwitch(

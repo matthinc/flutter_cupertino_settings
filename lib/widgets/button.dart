@@ -26,38 +26,39 @@ class CSButton extends CSWidget {
   final double fontSize;
 
   CSButton(this.type, this.text, this.pressed,
-      {CSWidgetStyle style = CS_DEFAULT_STYLE,
-      this.fontSize = CS_HEADER_FONT_SIZE})
+      {CSWidgetStyle style = CS_DEFAULT_STYLE, this.fontSize = CS_HEADER_FONT_SIZE})
       : super(
-            Flex(
-              direction: Axis.horizontal,
-              children: <Widget>[
-                Expanded(
-                  child: CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    child: Container(
-                      alignment: type.alignment,
-                      child: Text(text,
-                          style:
-                              TextStyle(color: type.color, fontSize: fontSize)),
+          Flex(
+            direction: Axis.horizontal,
+            children: <Widget>[
+              Expanded(
+                child: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: Container(
+                    alignment: type.alignment,
+                    child: Text(
+                      text,
+                      style: TextStyle(
+                        color: type.color,
+                        fontSize: fontSize,
+                      ),
                     ),
-                    onPressed: pressed,
                   ),
+                  onPressed: pressed,
                 ),
-              ],
-            ),
-            style: style);
+              ),
+            ],
+          ),
+          style: style,
+        );
 }
 
 /// Defines different types for [CSButton]
 /// Specifies color and alignment
 class CSButtonType {
-  static const CSButtonType DESTRUCTIVE =
-      CSButtonType(Colors.red, AlignmentDirectional.center);
-  static const CSButtonType DEFAULT =
-      CSButtonType(Colors.blue, AlignmentDirectional.centerStart);
-  static const CSButtonType DEFAULT_CENTER =
-      CSButtonType(Colors.blue, AlignmentDirectional.center);
+  static const CSButtonType DESTRUCTIVE = CSButtonType(Colors.red, AlignmentDirectional.center);
+  static const CSButtonType DEFAULT = CSButtonType(Colors.blue, AlignmentDirectional.centerStart);
+  static const CSButtonType DEFAULT_CENTER = CSButtonType(Colors.blue, AlignmentDirectional.center);
 
   final Color color;
   final AlignmentGeometry alignment;

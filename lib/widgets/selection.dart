@@ -17,8 +17,12 @@ class CSSelection extends StatefulWidget {
   final int currentSelection;
   final double fontSize;
 
-  CSSelection(this.items, this.onSelected,
-      {this.currentSelection = 0, this.fontSize = CS_HEADER_FONT_SIZE});
+  CSSelection(
+    this.items,
+    this.onSelected, {
+    this.currentSelection = 0,
+    this.fontSize = CS_HEADER_FONT_SIZE,
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -45,7 +49,8 @@ class CSSelectionState extends State<CSSelection> {
   }
 
   Widget createItem(BuildContext context, String name, int index) {
-    return CSWidget(new CupertinoButton(
+    return CSWidget(
+      CupertinoButton(
         onPressed: () {
           if (index != currentSelection) {
             setState(() => currentSelection = index);
@@ -56,23 +61,22 @@ class CSSelectionState extends State<CSSelection> {
         child: Row(
           children: <Widget>[
             Expanded(
-                child: Text(
-              name,
-              style: TextStyle(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : CS_TEXT_COLOR,
-                fontSize: widget.fontSize,
+              child: Text(
+                name,
+                style: TextStyle(
+                  color: _isDark(context) ? Colors.white : CS_TEXT_COLOR,
+                  fontSize: widget.fontSize,
+                ),
               ),
-            )),
-            Icon(Icons.check,
-                color: (index == currentSelection
-                    ? Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : CS_CHECK_COLOR
-                    : Colors.transparent),
-                size: CS_CHECK_SIZE)
+            ),
+            Icon(
+              Icons.check,
+              color: index == currentSelection ? _isDark(context) ? Colors.white : CS_CHECK_COLOR : Colors.transparent,
+              size: CS_CHECK_SIZE,
+            ),
           ],
-        )));
+        ),
+      ),
+    );
   }
 }

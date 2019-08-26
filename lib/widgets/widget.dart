@@ -35,17 +35,20 @@ class CSWidget extends StatelessWidget {
     }
 
     return Container(
-        alignment: alignment,
-        height: height,
-        padding: CS_ITEM_PADDING,
-        decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? null
-              : Colors.white,
-          border:
-              Border(bottom: BorderSide(color: CS_BORDER_COLOR, width: 1.0)),
+      alignment: alignment,
+      height: height,
+      padding: CS_ITEM_PADDING,
+      decoration: BoxDecoration(
+        color: _isDark(context) ? null : Colors.white,
+        border: Border(
+          bottom: BorderSide(
+            color: CS_BORDER_COLOR,
+            width: 1.0,
+          ),
         ),
-        child: child);
+      ),
+      child: child,
+    );
   }
 }
 
