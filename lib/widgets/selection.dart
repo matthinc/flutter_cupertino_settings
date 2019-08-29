@@ -11,50 +11,55 @@ part of flutter_cupertino_settings;
 /// select "world"
 ///
 /// onSelected(1)
-class CSSelection extends StatefulWidget {
-  final List<String> items;
-  final SelectionCallback onSelected;
-  final int currentSelection;
+
+class CSSelection<T> extends StatefulWidget {
+  final List<CSSelectionItem> items;
+  final void Function(T selected) onSelected;
+  final T currentSelection;
   final double fontSize;
 
   CSSelection(
     this.items,
     this.onSelected, {
-    this.currentSelection = 0,
+    this.currentSelection,
     this.fontSize = CS_HEADER_FONT_SIZE,
   });
 
   @override
   State<StatefulWidget> createState() {
-    return CSSelectionState(items, currentSelection, onSelected);
+    return CSSelectionState<T>(items, currentSelection ?? items.first.value, onSelected);
   }
 }
 
 /// [State] for [CSSelection]
-class CSSelectionState extends State<CSSelection> {
-  int currentSelection;
-  final SelectionCallback onSelected;
-  final List<String> items;
+class CSSelectionState<T> extends State<CSSelection> {
+  T currentSelection;
+  final void Function(T selected) onSelected;
+  final List<CSSelectionItem> items;
 
   CSSelectionState(this.items, this.currentSelection, this.onSelected);
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> widgets = <Widget>[];
-    for (int i = 0; i < items.length; i++) {
-      widgets.add(createItem(context, items[i], i));
-    }
+    // final List<Widget> widgets = <Widget>[];
+    // for (int i = 0; i < items.length; i++) {
+    //   widgets.add(createItem(context, items[i]));
+    // }
 
-    return Column(children: widgets);
+    // return Column(children: widgets);
+
+    return Column(
+      children: items.map<CSWidget>((item) => createItem(context, item)).toList(),
+    );
   }
 
-  Widget createItem(BuildContext context, String name, int index) {
+  Widget createItem(BuildContext context, CSSelectionItem item) {
     return CSWidget(
       CupertinoButton(
         onPressed: () {
-          if (index != currentSelection) {
-            setState(() => currentSelection = index);
-            onSelected(index);
+          if (item.value != currentSelection) {
+            setState(() => currentSelection = item.value);
+            onSelected(item.value);
           }
         },
         pressedOpacity: 1.0,
@@ -62,7 +67,7 @@ class CSSelectionState extends State<CSSelection> {
           children: <Widget>[
             Expanded(
               child: Text(
-                name,
+                item.text,
                 style: TextStyle(
                   color: _isDark(context) ? Colors.white : CS_TEXT_COLOR,
                   fontSize: widget.fontSize,
@@ -71,7 +76,9 @@ class CSSelectionState extends State<CSSelection> {
             ),
             Icon(
               Icons.check,
-              color: index == currentSelection ? _isDark(context) ? Colors.white : CS_CHECK_COLOR : Colors.transparent,
+              color: item.value == currentSelection
+                  ? _isDark(context) ? Colors.white : CS_CHECK_COLOR
+                  : Colors.transparent,
               size: CS_CHECK_SIZE,
             ),
           ],
@@ -79,4 +86,15 @@ class CSSelectionState extends State<CSSelection> {
       ),
     );
   }
+}
+
+class CSSelectionItem<T> {
+  final T value;
+  final String text;
+
+  const CSSelectionItem({
+    Key key,
+    this.value,
+    this.text,
+  });
 }
