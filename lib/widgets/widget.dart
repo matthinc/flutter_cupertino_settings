@@ -23,13 +23,15 @@ class CSWidget extends StatelessWidget {
 
     //style.icon
     if (style.icon != null) {
-      child = Row(children: <Widget>[
-        Container(
-          child: style.icon,
-          padding: CS_ICON_PADDING,
-        ),
-        Expanded(child: widget)
-      ]);
+      child = Row(
+        children: <Widget>[
+          Container(
+            child: style.icon,
+            padding: CS_ICON_PADDING,
+          ),
+          Expanded(child: widget)
+        ],
+      );
     } else {
       child = widget;
     }
@@ -39,11 +41,11 @@ class CSWidget extends StatelessWidget {
       height: height,
       padding: CS_ITEM_PADDING,
       decoration: BoxDecoration(
-        color: _isDark(context) ? null : Colors.white,
+        color: _isDark(context) ? CupertinoColors.darkBackgroundGray : CupertinoColors.white,
         border: Border(
           bottom: BorderSide(
-            color: CS_BORDER_COLOR,
-            width: 1.0,
+            color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
+            width: _isDark(context) ? 0.5 : 1,
           ),
         ),
       ),

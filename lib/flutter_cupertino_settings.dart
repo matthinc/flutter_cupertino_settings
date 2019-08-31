@@ -9,6 +9,7 @@ part 'widgets/description.dart';
 part 'widgets/header.dart';
 part 'widgets/link.dart';
 part 'widgets/selection.dart';
+part 'widgets/spacer.dart';
 part 'widgets/widget.dart';
 
 const double CS_ITEM_HEIGHT = 50.0;
