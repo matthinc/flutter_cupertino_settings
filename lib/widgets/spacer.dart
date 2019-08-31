@@ -2,10 +2,12 @@ part of flutter_cupertino_settings;
 
 class CSSpacer extends StatelessWidget {
   final Color backgroundColorDark;
+  final bool showBorder;
 
   const CSSpacer({
     Key key,
     this.backgroundColorDark = Colors.black12,
+    this.showBorder = true,
   }) : super(key: key);
 
   @override
@@ -15,9 +17,11 @@ class CSSpacer extends StatelessWidget {
       decoration: BoxDecoration(
         color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR,
         border: Border(
-          bottom: BorderSide(
-            color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-          ),
+          bottom: showBorder
+              ? BorderSide(
+                  color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
+                )
+              : BorderSide.none,
         ),
       ),
     );

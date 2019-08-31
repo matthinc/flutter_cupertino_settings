@@ -22,8 +22,9 @@ class CSDescription extends StatelessWidget {
       child: Text(
         description,
         style: TextStyle(
-          color: _isDark(context) ? null : CS_HEADER_TEXT_COLOR,
+          color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
           fontSize: CS_DESCRIPTION_FONT_SIZE,
+          height: 1.1,
         ),
       ),
     );
