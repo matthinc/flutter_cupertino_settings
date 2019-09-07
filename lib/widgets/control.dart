@@ -14,12 +14,13 @@ class CSControl extends CSWidget {
     CSWidgetStyle style = CS_DEFAULT_STYLE,
     this.fontSize = CS_HEADER_FONT_SIZE,
   }) : super(
-            _ControlWidget(
-              fontSize: fontSize,
-              contentWidget: contentWidget,
-              name: name,
-            ),
-            style: style);
+          _ControlWidget(
+            fontSize: fontSize,
+            contentWidget: contentWidget,
+            name: name,
+          ),
+          style: style,
+        );
 }
 
 class _ControlWidget extends StatelessWidget {
@@ -39,13 +40,13 @@ class _ControlWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(name,
-            style: TextStyle(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? null
-                  : CS_TEXT_COLOR,
-              fontSize: fontSize,
-            )),
+        Text(
+          name,
+          style: TextStyle(
+            color: _isDark(context) ? null : CS_TEXT_COLOR,
+            fontSize: fontSize,
+          ),
+        ),
         contentWidget
       ],
     );

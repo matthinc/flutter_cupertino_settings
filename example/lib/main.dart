@@ -35,15 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
         items: <Widget>[
           CSHeader('Brightness'),
           CSWidget(
-              new CupertinoSlider(
-                value: _slider,
-                onChanged: (double value) {
-                  setState(() {
-                    _slider = value;
-                  });
-                },
-              ),
-              style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun))),
+            CupertinoSlider(
+              value: _slider,
+              onChanged: (double value) {
+                setState(() {
+                  _slider = value;
+                });
+              },
+            ),
+            style: CSWidgetStyle(
+              icon: Icon(FontAwesomeIcons.sun),
+            ),
+          ),
           CSControl(
             'Auto brightness',
             CupertinoSwitch(
@@ -57,15 +60,19 @@ class _HomeScreenState extends State<HomeScreen> {
             style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
           ),
           CSHeader('Selection'),
-          CSSelection(
-            ['Day mode', 'Night mode'],
-            (int value) {
+          CSSelection<int>(
+            [
+              CSSelectionItem<int>(text: 'Day mode', value: 0),
+              CSSelectionItem<int>(text: 'Night mode', value: 1),
+            ],
+            (value) {
               setState(() {
                 _index = value;
               });
             },
             currentSelection: _index,
           ),
+          CSDescription('Using Night mode extends battery life on devices with OLED display'),
           CSHeader(""),
           CSControl('Loading...', CupertinoActivityIndicator()),
           CSButton(CSButtonType.DEFAULT, "Licenses", () {
