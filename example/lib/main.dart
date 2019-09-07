@@ -60,9 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
             style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
           ),
           CSHeader('Selection'),
-          CSSelection(
-            ['Day mode', 'Night mode'],
-            (int value) {
+          CSSelection<int>(
+            [
+              CSSelectionItem<int>(text: 'Day mode', value: 0),
+              CSSelectionItem<int>(text: 'Night mode', value: 1),
+            ],
+            (value) {
               setState(() {
                 _index = value;
               });

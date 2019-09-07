@@ -13,6 +13,7 @@ part 'widgets/spacer.dart';
 part 'widgets/widget.dart';
 
 const double CS_ITEM_HEIGHT = 50.0;
+const double CS_BORDER_HEIGHT = 0.45;
 const Color CS_HEADER_COLOR = Color(0xFFEEEEF3);
 const Color CS_BORDER_COLOR = Colors.black12;
 const Color CS_TEXT_COLOR = Colors.black;

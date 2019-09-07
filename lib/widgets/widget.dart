@@ -45,7 +45,7 @@ class CSWidget extends StatelessWidget {
         border: Border(
           bottom: BorderSide(
             color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-            width: _isDark(context) ? 0.5 : 1,
+            width: CS_BORDER_HEIGHT,
           ),
         ),
       ),

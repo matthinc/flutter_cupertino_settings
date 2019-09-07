@@ -41,13 +41,6 @@ class CSSelectionState<T> extends State<CSSelection> {
 
   @override
   Widget build(BuildContext context) {
-    // final List<Widget> widgets = <Widget>[];
-    // for (int i = 0; i < items.length; i++) {
-    //   widgets.add(createItem(context, items[i]));
-    // }
-
-    // return Column(children: widgets);
-
     return Column(
       children: items.map<CSWidget>((item) => createItem(context, item)).toList(),
     );
