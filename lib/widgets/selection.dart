@@ -47,6 +47,8 @@ class CSSelectionState<T> extends State<CSSelection> {
   }
 
   Widget createItem(BuildContext context, CSSelectionItem item) {
+    final isLastItem = items.last == item;
+
     return CSWidget(
       CupertinoButton(
         onPressed: () {
@@ -56,7 +58,9 @@ class CSSelectionState<T> extends State<CSSelection> {
           }
         },
         pressedOpacity: 1.0,
+        padding: const EdgeInsets.fromLTRB(4, 1, 2, 1),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               child: Text(
@@ -68,15 +72,14 @@ class CSSelectionState<T> extends State<CSSelection> {
               ),
             ),
             Icon(
-              Icons.check,
-              color: item.value == currentSelection
-                  ? _isDark(context) ? Colors.white : CS_CHECK_COLOR
-                  : Colors.transparent,
+              CupertinoIcons.check_mark,
+              color: item.value == currentSelection ? CS_CHECK_COLOR : Colors.transparent,
               size: CS_CHECK_SIZE,
             ),
           ],
         ),
       ),
+      addPaddingToBorder: !isLastItem,
     );
   }
 }

@@ -9,20 +9,24 @@ class CSWidget extends StatelessWidget {
   final AlignmentGeometry alignment;
   final double height;
   final CSWidgetStyle style;
+  final bool addPaddingToBorder;
 
   CSWidget(
     this.widget, {
     this.alignment,
     this.height = CS_ITEM_HEIGHT,
     this.style = CS_DEFAULT_STYLE,
+    this.addPaddingToBorder = false,
   });
 
   @override
   Widget build(BuildContext context) {
     Widget child;
+    EdgeInsets padding;
 
     //style.icon
     if (style.icon != null) {
+      padding = CS_ICON_PADDING;
       child = Row(
         children: <Widget>[
           Container(
@@ -34,22 +38,26 @@ class CSWidget extends StatelessWidget {
       );
     } else {
       child = widget;
+      padding = CS_ITEM_PADDING;
     }
 
     return Container(
       alignment: alignment,
+      color: _isDark(context) ? CupertinoColors.darkBackgroundGray : CupertinoColors.white,
       height: height,
-      padding: CS_ITEM_PADDING,
-      decoration: BoxDecoration(
-        color: _isDark(context) ? CupertinoColors.darkBackgroundGray : CupertinoColors.white,
-        border: Border(
-          bottom: BorderSide(
-            color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-            width: CS_BORDER_HEIGHT,
+      padding: EdgeInsets.only(left: addPaddingToBorder ? padding.left : 0),
+      child: Container(
+        padding: addPaddingToBorder ? padding.copyWith(left: 4) : padding.copyWith(left: padding.left + 4),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
+              width: _isDark(context) ? CS_BORDER_HEIGHT_DARK : CS_BORDER_HEIGHT_LIGHT,
+            ),
           ),
         ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
@@ -57,5 +65,6 @@ class CSWidget extends StatelessWidget {
 /// Defines style attributes that can be applied to every [CSWidget]
 class CSWidgetStyle {
   final Icon icon;
+
   const CSWidgetStyle({this.icon});
 }

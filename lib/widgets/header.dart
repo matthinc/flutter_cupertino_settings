@@ -27,7 +27,7 @@ class CSHeader extends StatelessWidget {
         border: Border(
           bottom: BorderSide(
             color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-            width: CS_BORDER_HEIGHT,
+            width: _isDark(context) ? CS_BORDER_HEIGHT_DARK : CS_BORDER_HEIGHT_LIGHT,
           ),
         ),
       ),

@@ -25,9 +25,13 @@ class CSButton extends CSWidget {
   final VoidCallback pressed;
   final double fontSize;
 
-  CSButton(this.type, this.text, this.pressed,
-      {CSWidgetStyle style = CS_DEFAULT_STYLE, this.fontSize = CS_HEADER_FONT_SIZE})
-      : super(
+  CSButton(
+    this.type,
+    this.text,
+    this.pressed, {
+    CSWidgetStyle style = CS_DEFAULT_STYLE,
+    this.fontSize = CS_HEADER_FONT_SIZE,
+  }) : super(
           Flex(
             direction: Axis.horizontal,
             children: <Widget>[

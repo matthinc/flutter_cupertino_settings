@@ -6,12 +6,14 @@ class CSLink extends StatelessWidget {
   final VoidCallback pressed;
   final double fontSize;
   final CSWidgetStyle style;
+  final bool addPaddingToBorder;
 
   CSLink(
     this.text,
     this.pressed, {
     this.style = CS_DEFAULT_STYLE,
     this.fontSize = CS_HEADER_FONT_SIZE,
+    this.addPaddingToBorder = true,
   });
 
   @override
@@ -38,6 +40,7 @@ class CSLink extends StatelessWidget {
         onPressed: pressed,
       ),
       style: style,
+      addPaddingToBorder: addPaddingToBorder,
     );
   }
 }

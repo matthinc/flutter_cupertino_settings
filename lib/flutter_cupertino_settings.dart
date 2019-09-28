@@ -13,8 +13,9 @@ part 'widgets/spacer.dart';
 part 'widgets/widget.dart';
 
 const double CS_ITEM_HEIGHT = 50.0;
-const double CS_BORDER_HEIGHT = 0.45;
-const Color CS_HEADER_COLOR = Color(0xFFEEEEF3);
+const double CS_BORDER_HEIGHT_DARK = 0.45;
+const double CS_BORDER_HEIGHT_LIGHT = 0.65;
+const Color CS_HEADER_COLOR = Color(0xFFF2F2F7);
 const Color CS_BORDER_COLOR = Colors.black12;
 const Color CS_TEXT_COLOR = Colors.black;
 const Color CS_HEADER_TEXT_COLOR = Colors.black54;
@@ -25,7 +26,7 @@ const double CS_ITEM_NAME_SIZE = 15.0;
 const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(right: 10.0);
 const CSWidgetStyle CS_DEFAULT_STYLE = CSWidgetStyle();
 const Color CS_CHECK_COLOR = Colors.blue;
-const double CS_CHECK_SIZE = 16.0;
+const double CS_CHECK_SIZE = 42.0;
 
 /// Event for [CSSelection]
 typedef void SelectionCallback(int selected);
@@ -47,7 +48,7 @@ class CupertinoSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!shrinkWrap) {
       return Container(
-        color: _isDark(context) ? Colors.black12 : CupertinoColors.lightBackgroundGray,
+        color: _isDark(context) ? Colors.black12 : Color(0x33787880),
         child: SafeArea(
           bottom: false,
           child: Column(
@@ -67,7 +68,7 @@ class CupertinoSettings extends StatelessWidget {
       );
     }
     return Container(
-      color: _isDark(context) ? Colors.black12 : CupertinoColors.lightBackgroundGray,
+      color: _isDark(context) ? Colors.black12 : Color(0x33787880),
       child: SafeArea(
         bottom: false,
         child: ListView.builder(
