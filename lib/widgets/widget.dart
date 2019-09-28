@@ -10,6 +10,7 @@ class CSWidget extends StatelessWidget {
   final double height;
   final CSWidgetStyle style;
   final bool addPaddingToBorder;
+  final bool showTopBorder;
 
   CSWidget(
     this.widget, {
@@ -17,6 +18,7 @@ class CSWidget extends StatelessWidget {
     this.height = CS_ITEM_HEIGHT,
     this.style = CS_DEFAULT_STYLE,
     this.addPaddingToBorder = false,
+    this.showTopBorder = false,
   });
 
   @override
@@ -43,11 +45,22 @@ class CSWidget extends StatelessWidget {
 
     return Container(
       alignment: alignment,
-      color: _isDark(context) ? CupertinoColors.darkBackgroundGray : CupertinoColors.white,
-      height: height,
+      decoration: BoxDecoration(
+        color: _isDark(context) ? CupertinoColors.darkBackgroundGray : CupertinoColors.white,
+        border: Border(
+          top: showTopBorder
+              ? BorderSide(
+                  color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
+                  width: _isDark(context) ? CS_BORDER_HEIGHT_DARK : CS_BORDER_HEIGHT_LIGHT,
+                )
+              : BorderSide.none,
+        ),
+      ),
+      constraints: BoxConstraints(minHeight: 46),
+      // height: height,
       padding: EdgeInsets.only(left: addPaddingToBorder ? padding.left : 0),
       child: Container(
-        padding: addPaddingToBorder ? padding.copyWith(left: 4) : padding.copyWith(left: padding.left + 4),
+        padding: addPaddingToBorder ? padding.copyWith(left: 2) : padding.copyWith(left: padding.left + 2),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
@@ -68,3 +81,5 @@ class CSWidgetStyle {
 
   const CSWidgetStyle({this.icon});
 }
+
+enum ItemType { single, list, listLast }

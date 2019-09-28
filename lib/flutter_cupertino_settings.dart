@@ -1,5 +1,7 @@
 library flutter_cupertino_settings;
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -19,7 +21,9 @@ const Color CS_HEADER_COLOR = Color(0xFFF2F2F7);
 const Color CS_BORDER_COLOR = Colors.black12;
 const Color CS_TEXT_COLOR = Colors.black;
 const Color CS_HEADER_TEXT_COLOR = Colors.black54;
-const EdgeInsets CS_ITEM_PADDING = EdgeInsets.only(left: 10.0, right: 10.0);
+const EdgeInsets CS_ITEM_PADDING = EdgeInsets.symmetric(horizontal: 10, vertical: 3);
+const double CS_TITLE_FONT_SIZE = 16.0;
+const double CS_SUBTITLE_FONT_SIZE = 11.0;
 const double CS_HEADER_FONT_SIZE = 14.0;
 const double CS_DESCRIPTION_FONT_SIZE = 13.0;
 const double CS_ITEM_NAME_SIZE = 15.0;
@@ -34,6 +38,9 @@ typedef void SelectionCallback(int selected);
 /// Simple help function for determining the theme brightness
 bool _isDark(BuildContext context) =>
     CupertinoTheme.of(context).brightness == Brightness.dark || Theme.of(context).brightness == Brightness.dark;
+
+TextStyle basicTextStyle(BuildContext context) =>
+    Platform.isIOS ? CupertinoTheme.of(context).textTheme.textStyle : Theme.of(context).textTheme.subhead;
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;

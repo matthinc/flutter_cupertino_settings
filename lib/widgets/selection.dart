@@ -22,7 +22,7 @@ class CSSelection<T> extends StatefulWidget {
     this.items,
     this.onSelected, {
     this.currentSelection,
-    this.fontSize = CS_HEADER_FONT_SIZE,
+    this.fontSize = CS_TITLE_FONT_SIZE,
   });
 
   @override
@@ -37,7 +37,11 @@ class CSSelectionState<T> extends State<CSSelection> {
   final void Function(T selected) onSelected;
   final List<CSSelectionItem> items;
 
-  CSSelectionState(this.items, this.currentSelection, this.onSelected);
+  CSSelectionState(
+    this.items,
+    this.currentSelection,
+    this.onSelected,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +84,7 @@ class CSSelectionState<T> extends State<CSSelection> {
         ),
       ),
       addPaddingToBorder: !isLastItem,
+      showTopBorder: item.showTopBorder,
     );
   }
 }
@@ -87,10 +92,12 @@ class CSSelectionState<T> extends State<CSSelection> {
 class CSSelectionItem<T> {
   final T value;
   final String text;
+  final bool showTopBorder;
 
   const CSSelectionItem({
     Key key,
     this.value,
     this.text,
+    this.showTopBorder = false,
   });
 }
