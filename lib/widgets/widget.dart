@@ -60,7 +60,7 @@ class CSWidget extends StatelessWidget {
       // height: height,
       padding: EdgeInsets.only(left: addPaddingToBorder ? padding.left : 0),
       child: Container(
-        padding: addPaddingToBorder ? padding.copyWith(left: 2) : padding.copyWith(left: padding.left + 2),
+        padding: padding.copyWith(left: addPaddingToBorder ? 2 : padding.left + 2),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(

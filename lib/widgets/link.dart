@@ -31,29 +31,36 @@ class CSLink extends StatelessWidget {
         padding: EdgeInsets.zero,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  title,
-                  style: basicTextStyle(context).copyWith(
-                    color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
-                  ),
-                ),
-                if (showSubtitle) SizedBox(height: 2),
-                if (showSubtitle)
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
                   Text(
-                    subtitle,
+                    title,
                     style: basicTextStyle(context).copyWith(
-                      color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
-                      fontSize: subTitleFontSize,
-                      fontWeight: FontWeight.w300,
+                      color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
                     ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-              ],
+                  if (showSubtitle) SizedBox(height: 2),
+                  if (showSubtitle)
+                    Text(
+                      subtitle,
+                      style: basicTextStyle(context).copyWith(
+                        color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
+                        fontSize: subTitleFontSize,
+                        fontWeight: FontWeight.w300,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                    ),
+                ],
+              ),
             ),
             Icon(
               Icons.keyboard_arrow_right,
