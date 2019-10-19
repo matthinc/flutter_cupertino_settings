@@ -30,7 +30,7 @@ class CSLink extends StatelessWidget {
               ),
             ),
             Icon(
-              Icons.keyboard_arrow_right,
+              CupertinoIcons.right_chevron,
               color: _isDark(context) ? CupertinoColors.extraLightBackgroundGray : Colors.black26,
             ),
           ],

@@ -68,7 +68,7 @@ class CSSelectionState<T> extends State<CSSelection> {
               ),
             ),
             Icon(
-              Icons.check,
+              CupertinoIcons.check_mark,
               color: item.value == currentSelection
                   ? _isDark(context) ? Colors.white : CS_CHECK_COLOR
                   : Colors.transparent,
