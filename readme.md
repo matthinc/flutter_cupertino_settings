@@ -28,10 +28,10 @@ CupertinoSettings(
         CSHeader('Selection'),
         CSSelection(['Day mode','Night mode'], (index) {print(index);}, currentSelection: 0),
         CSDescription('Using Night mode extends battery life on devices with OLED display'),
-        CSHeader(),
+        CSHeader(''),
         CSControl('Loading...', CupertinoActivityIndicator()),
         CSButton(CSButtonType.DEFAULT, "Licenses", (){ print("It works!"); }),
-        CSHeader(),
+        CSHeader(''),
         CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", (){})
     ]
 );

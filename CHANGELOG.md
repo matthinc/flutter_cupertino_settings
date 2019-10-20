@@ -1,3 +1,5 @@
+## [0.2.0] - Smaller changes and fixes
+
 ## [0.1.0] - Dark Mode Support
 
 * Dark Mode Support
