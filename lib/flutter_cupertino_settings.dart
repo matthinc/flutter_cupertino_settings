@@ -2,12 +2,14 @@ library flutter_cupertino_settings;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 
 part 'widgets/button.dart';
 part 'widgets/control.dart';
 part 'widgets/description.dart';
 part 'widgets/header.dart';
 part 'widgets/link.dart';
+part 'widgets/secret.dart';
 part 'widgets/selection.dart';
 part 'widgets/spacer.dart';
 part 'widgets/widget.dart';
