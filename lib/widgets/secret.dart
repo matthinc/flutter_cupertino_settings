@@ -3,13 +3,13 @@ part of flutter_cupertino_settings;
 /// Provides a button for navigation
 class CSSecret extends StatefulWidget {
   final String text;
-  final String pressed;
+  final String secret;
   final double fontSize;
   final CSWidgetStyle style;
 
   CSSecret(
     this.text,
-    this.pressed, {
+    this.secret, {
     this.style = CS_DEFAULT_STYLE,
     this.fontSize = CS_HEADER_FONT_SIZE,
   });
@@ -37,7 +37,7 @@ class _CSSecretState extends State<CSSecret> {
           Row(
             children: <Widget>[
               Text(
-                _show ? widget.text : RenderEditable.obscuringCharacter * widget.text.length,
+                _show ? widget.secret : RenderEditable.obscuringCharacter * widget.secret.length,
                 style: TextStyle(
                   color: _isDark(context) ? CupertinoColors.extraLightBackgroundGray : CS_TEXT_COLOR,
                   fontSize: widget.fontSize,
