@@ -17,7 +17,7 @@ part 'widgets/widget.dart';
 const double CS_ITEM_HEIGHT = 50.0;
 const double CS_BORDER_HEIGHT_DARK = 0.45;
 const double CS_BORDER_HEIGHT_LIGHT = 0.65;
-const Color CS_HEADER_COLOR = Color(0xFFF2F2F7);
+const Color CS_HEADER_COLOR = CupertinoColors.extraLightBackgroundGray; // Color(0xFFF2F2F7)
 const Color CS_BORDER_COLOR = Colors.black12;
 const Color CS_TEXT_COLOR = Colors.black;
 const Color CS_HEADER_TEXT_COLOR = Colors.black54;
