@@ -23,7 +23,7 @@ class CSHeader extends StatelessWidget {
         ),
       ),
       decoration: BoxDecoration(
-        color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR,
+        color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR_LIGHT,
         border: Border(
           bottom: BorderSide(
             color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,

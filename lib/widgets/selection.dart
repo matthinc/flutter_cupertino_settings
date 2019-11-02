@@ -18,9 +18,9 @@ class CSSelection<T> extends StatefulWidget {
   final T currentSelection;
   final double fontSize;
 
-  CSSelection(
+  CSSelection({
     this.items,
-    this.onSelected, {
+    this.onSelected,
     this.currentSelection,
     this.fontSize = CS_TITLE_FONT_SIZE,
   });
@@ -58,8 +58,8 @@ class CSSelectionState<T> extends State<CSSelection> {
         onPressed: () {
           if (item.value != currentSelection) {
             setState(() => currentSelection = item.value);
-            onSelected(item.value);
           }
+          onSelected(item.value);
         },
         pressedOpacity: 1.0,
         padding: const EdgeInsets.fromLTRB(4, 1, 2, 1),

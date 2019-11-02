@@ -56,7 +56,7 @@ class CSWidget extends StatelessWidget {
               : BorderSide.none,
         ),
       ),
-      constraints: BoxConstraints(minHeight: 46),
+      constraints: BoxConstraints(minHeight: 42),
       // height: height,
       padding: EdgeInsets.only(left: addPaddingToBorder ? padding.left : 0),
       child: Container(

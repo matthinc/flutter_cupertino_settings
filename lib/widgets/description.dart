@@ -20,7 +20,7 @@ class CSDescription extends StatelessWidget {
           5,
           5,
         ),
-        color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR,
+        color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR_LIGHT,
         child: Text(
           description,
           style: basicTextStyle(context).copyWith(

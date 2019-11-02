@@ -9,9 +9,9 @@ class CSControl extends CSWidget {
   final double fontSize;
   final bool addPaddingToBorder;
 
-  CSControl(
+  CSControl({
     this.name,
-    this.contentWidget, {
+    this.contentWidget,
     CSWidgetStyle style = CS_DEFAULT_STYLE,
     this.fontSize = CS_TITLE_FONT_SIZE,
     this.addPaddingToBorder = true,
@@ -50,7 +50,13 @@ class _ControlWidget extends StatelessWidget {
             fontSize: fontSize,
           ),
         ),
-        contentWidget
+        DefaultTextStyle(
+          child: contentWidget,
+          style: basicTextStyle(context).copyWith(
+            color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
+            fontSize: fontSize,
+          ),
+        ),
       ],
     );
   }

@@ -4,27 +4,38 @@ part of flutter_cupertino_settings;
 class CSLink extends StatelessWidget {
   final String title;
   final String subtitle;
-  final VoidCallback pressed;
+  final String detail;
+  final VoidCallback onPressed;
   final double titleFontSize;
   final double subTitleFontSize;
   final CSWidgetStyle style;
   final bool addPaddingToBorder;
   final bool showTopBorder;
+  final Widget trailing;
+  final CellType cellType;
 
-  CSLink(
+  CSLink({
     this.title,
-    this.pressed, {
+    this.onPressed,
     this.subtitle,
+    this.detail,
     this.style = CS_DEFAULT_STYLE,
     this.titleFontSize = CS_TITLE_FONT_SIZE,
     this.subTitleFontSize = CS_SUBTITLE_FONT_SIZE,
     this.addPaddingToBorder = true,
     this.showTopBorder = false,
+    this.trailing,
+    this.cellType = CellType.defaultStyle,
   });
 
   @override
   Widget build(BuildContext context) {
-    final showSubtitle = subtitle != null && subtitle.isNotEmpty;
+    final showSubtitle = (cellType == CellType.subtitleDetailStyle || cellType == CellType.subtitleStyle) &&
+        subtitle != null &&
+        subtitle.isNotEmpty;
+    final showDetail = (cellType == CellType.subtitleDetailStyle || cellType == CellType.detailRightStyle) &&
+        detail != null &&
+        detail.isNotEmpty;
 
     return CSWidget(
       CupertinoButton(
@@ -43,6 +54,7 @@ class CSLink extends StatelessWidget {
                     title,
                     style: basicTextStyle(context).copyWith(
                       color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
+                      fontSize: titleFontSize,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -52,9 +64,9 @@ class CSLink extends StatelessWidget {
                     Text(
                       subtitle,
                       style: basicTextStyle(context).copyWith(
-                        color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
+                        color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
                         fontSize: subTitleFontSize,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w400,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.clip,
@@ -62,17 +74,48 @@ class CSLink extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(
-              CupertinoIcons.right_chevron,
-              color: _isDark(context) ? CupertinoColors.extraLightBackgroundGray : Colors.black26,
-            ),
+            if (showDetail) ...[
+              Text(
+                detail,
+                style: basicTextStyle(context).copyWith(
+                  color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                  fontSize: titleFontSize,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.clip,
+              ),
+              SizedBox(width: 4),
+            ],
+            trailing ??
+                Icon(
+                  CupertinoIcons.right_chevron,
+                  color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                  size: 20,
+                ),
           ],
         ),
-        onPressed: pressed,
+        onPressed: onPressed,
       ),
       style: style,
       addPaddingToBorder: addPaddingToBorder,
       showTopBorder: showTopBorder,
     );
   }
+}
+
+enum CellType {
+  /// Default Style with optional widget on left side and left-aligned title
+  defaultStyle,
+
+  /// Left-aligned title and left-aligned subtitle below
+  subtitleStyle,
+
+  /// Left-aligned title, left-aligned subtitle below and right-aligned detail
+  subtitleDetailStyle,
+
+  /// Left-aligned title and right-aligned detail
+  detailRightStyle,
+
+  /// right-aligned title and left-aligned detail
+  detailLeftStyle,
 }

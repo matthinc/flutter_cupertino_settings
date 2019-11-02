@@ -30,7 +30,7 @@ class CSButton extends CSWidget {
     this.text,
     this.pressed, {
     CSWidgetStyle style = CS_DEFAULT_STYLE,
-    this.fontSize = CS_HEADER_FONT_SIZE,
+    this.fontSize = CS_TITLE_FONT_SIZE,
   }) : super(
           Flex(
             direction: Axis.horizontal,
