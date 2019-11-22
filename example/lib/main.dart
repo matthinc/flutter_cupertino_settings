@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light(),
+      theme: ThemeData.dark(),
       home: HomeScreen(),
     );
   }
@@ -37,11 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           CSWidget(
             CupertinoSlider(
               value: _slider,
-              onChanged: (double value) {
-                setState(() {
-                  _slider = value;
-                });
-              },
+              onChanged: (double value) => setState(() => _slider = value),
             ),
             style: CSWidgetStyle(
               icon: Icon(FontAwesomeIcons.sun),
@@ -51,13 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
             name: 'Auto brightness',
             contentWidget: CupertinoSwitch(
               value: _switch,
-              onChanged: (bool value) {
-                setState(() {
-                  _switch = value;
-                });
-              },
+              onChanged: (bool value) => setState(() => _switch = value),
             ),
-            style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
+            style: CSWidgetStyle(
+              icon: Icon(FontAwesomeIcons.sun),
+            ),
           ),
           CSHeader('Selection'),
           CSSelection<int>(
@@ -65,11 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               CSSelectionItem<int>(text: 'Day mode', value: 0),
               CSSelectionItem<int>(text: 'Night mode', value: 1),
             ],
-            onSelected: (value) {
-              setState(() {
-                _index = value;
-              });
-            },
+            onSelected: (value) => setState(() => _index = value),
             currentSelection: _index,
           ),
           CSDescription('Using Night mode extends battery life on devices with OLED display'),

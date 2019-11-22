@@ -14,4 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  # cupertino_icons:
+  #   git:
+  #     url: https://github.com/flutter/cupertino_icons.git
 

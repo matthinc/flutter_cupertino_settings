@@ -53,7 +53,8 @@ class _ControlWidget extends StatelessWidget {
         DefaultTextStyle(
           child: contentWidget,
           style: basicTextStyle(context).copyWith(
-            color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
+            // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
+            color: CupertinoColors.label,
             fontSize: fontSize,
           ),
         ),

@@ -15,7 +15,8 @@ class CSSpacer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 10.0, top: 20.0, bottom: 5.0),
       decoration: BoxDecoration(
-        color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR_LIGHT,
+        // color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR_LIGHT,
+        color: _isDark(context) ? CupertinoColors.systemBackground : CupertinoColors.secondarySystemBackground,
         border: Border(
           bottom: showBorder
               ? BorderSide(

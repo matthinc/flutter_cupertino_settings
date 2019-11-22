@@ -53,7 +53,8 @@ class CSLink extends StatelessWidget {
                   Text(
                     title,
                     style: basicTextStyle(context).copyWith(
-                      color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
+                      // color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
+                      color: CupertinoColors.label,
                       fontSize: titleFontSize,
                     ),
                     maxLines: 2,
@@ -64,7 +65,8 @@ class CSLink extends StatelessWidget {
                     Text(
                       subtitle,
                       style: basicTextStyle(context).copyWith(
-                        color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                        // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                        color: CupertinoColors.secondaryLabel,
                         fontSize: subTitleFontSize,
                         fontWeight: FontWeight.w400,
                       ),
@@ -78,7 +80,8 @@ class CSLink extends StatelessWidget {
               Text(
                 detail,
                 style: basicTextStyle(context).copyWith(
-                  color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                  // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                  color: CupertinoColors.secondaryLabel,
                   fontSize: titleFontSize,
                 ),
                 maxLines: 1,
@@ -89,7 +92,8 @@ class CSLink extends StatelessWidget {
             trailing ??
                 Icon(
                   CupertinoIcons.right_chevron,
-                  color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                  // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
+                  color: CupertinoColors.secondaryLabel,
                   size: 20,
                 ),
           ],

@@ -56,7 +56,8 @@ class CupertinoSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: _isDark(context) ? Colors.black12 : CupertinoColors.extraLightBackgroundGray, // Color(0x33787880),
+      // color: _isDark(context) ? Colors.black12 : CupertinoColors.extraLightBackgroundGray, // Color(0x33787880),
+      color: _isDark(context) ? CupertinoColors.systemBackground : CupertinoColors.secondarySystemBackground,
       child: SafeArea(
         bottom: false,
         child: shrinkWrap
