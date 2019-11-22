@@ -46,7 +46,7 @@ class CSWidget extends StatelessWidget {
     return Container(
       alignment: alignment,
       decoration: BoxDecoration(
-        color: _isDark(context) ? CupertinoColors.secondarySystemBackground : CupertinoColors.systemBackground,
+        color: _isDark(context) ? CupertinoColors.secondarySystemBackground.resolveFrom(context) : CupertinoColors.systemBackground.resolveFrom(context),
         // color: CupertinoColors.systemGroupedBackground,
         border: Border(
           top: showTopBorder

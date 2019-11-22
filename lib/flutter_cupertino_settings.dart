@@ -3,7 +3,7 @@ library flutter_cupertino_settings;
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show Colors, Theme;
 import 'package:flutter/cupertino.dart';
 
 part 'widgets/button.dart';
@@ -38,8 +38,9 @@ const double CS_CHECK_SIZE = 22.0;
 typedef void SelectionCallback(int selected);
 
 /// Simple help function for determining the theme brightness
-bool _isDark(BuildContext context) =>
-    CupertinoTheme.of(context).brightness == Brightness.dark || Theme.of(context).brightness == Brightness.dark;
+bool _isDark(BuildContext context) => _isIOSDark(context) || Theme.of(context).brightness == Brightness.dark;
+
+bool _isIOSDark(BuildContext context) => CupertinoTheme.of(context).brightness == Brightness.dark;
 
 TextStyle basicTextStyle(BuildContext context) =>
     Platform.isIOS ? CupertinoTheme.of(context).textTheme.textStyle : Theme.of(context).textTheme.subhead;
@@ -57,7 +58,7 @@ class CupertinoSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: _isDark(context) ? Colors.black12 : CupertinoColors.extraLightBackgroundGray, // Color(0x33787880),
-      color: _isDark(context) ? CupertinoColors.systemBackground : CupertinoColors.secondarySystemBackground,
+      color: _isIOSDark(context) ? CupertinoColors.systemBackground.resolveFrom(context) : CupertinoColors.secondarySystemBackground.resolveFrom(context),
       child: SafeArea(
         bottom: false,
         child: shrinkWrap

@@ -19,7 +19,7 @@ class CSDescription extends StatelessWidget {
         5,
       ),
       // color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR_LIGHT,
-      color: _isDark(context) ? CupertinoColors.systemBackground : CupertinoColors.secondarySystemBackground,
+      color: _isDark(context) ? CupertinoColors.systemBackground.resolveFrom(context) : CupertinoColors.secondarySystemBackground.resolveFrom(context),
       child: Text(
         description,
         style: basicTextStyle(context).copyWith(
