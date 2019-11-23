@@ -27,7 +27,7 @@ const double CS_DESCRIPTION_FONT_SIZE = 13.0;
 const double CS_ITEM_NAME_SIZE = 15.0;
 const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(right: 10.0);
 const CSWidgetStyle CS_DEFAULT_STYLE = CSWidgetStyle();
-const double CS_CHECK_SIZE = 22.0;
+const double CS_CHECK_SIZE = 28.0;
 
 /// Event for [CSSelection]
 typedef void SelectionCallback(int selected);
