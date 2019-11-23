@@ -18,13 +18,11 @@ class CSHeader extends StatelessWidget {
       child: Text(
         title.toUpperCase(),
         style: basicTextStyle(context).copyWith(
-          // color: _isDark(context) ? CupertinoColors.white : CS_HEADER_TEXT_COLOR,
           color: CupertinoColors.secondaryLabel.resolveFrom(context),
           fontSize: CS_HEADER_FONT_SIZE,
         ),
       ),
       decoration: BoxDecoration(
-        // color: _isDark(context) ? backgroundColorDark : CS_HEADER_COLOR_LIGHT,
         color: _isDark(context) ? CupertinoColors.systemBackground.resolveFrom(context) : CupertinoColors.secondarySystemBackground.resolveFrom(context),
         border: Border(
           bottom: BorderSide(

@@ -18,11 +18,7 @@ part 'widgets/widget.dart';
 const double CS_ITEM_HEIGHT = 50.0;
 const double CS_BORDER_HEIGHT_DARK = 0.45;
 const double CS_BORDER_HEIGHT_LIGHT = 0.65;
-const Color CS_HEADER_COLOR_LIGHT = CupertinoColors.extraLightBackgroundGray; // Color(0xFFF2F2F7)
 const Color CS_BORDER_COLOR = Colors.black12;
-const Color CS_TEXT_COLOR = Colors.black;
-const Color CS_HEADER_TEXT_COLOR = Colors.black54;
-const Color CS_SUBTITLE_TEXT_COLOR_LIGHT = Color(0xFF9C9C9F);
 const EdgeInsets CS_ITEM_PADDING = EdgeInsets.symmetric(horizontal: 10, vertical: 1);
 const double CS_TITLE_FONT_SIZE = 16.0;
 const double CS_SUBTITLE_FONT_SIZE = 11.0;
@@ -31,7 +27,6 @@ const double CS_DESCRIPTION_FONT_SIZE = 13.0;
 const double CS_ITEM_NAME_SIZE = 15.0;
 const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(right: 10.0);
 const CSWidgetStyle CS_DEFAULT_STYLE = CSWidgetStyle();
-const Color CS_CHECK_COLOR = Colors.blue;
 const double CS_CHECK_SIZE = 22.0;
 
 /// Event for [CSSelection]

@@ -46,14 +46,13 @@ class _ControlWidget extends StatelessWidget {
         Text(
           name,
           style: basicTextStyle(context).copyWith(
-            color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
+            color: CupertinoColors.label.resolveFrom(context),
             fontSize: fontSize,
           ),
         ),
         DefaultTextStyle(
           child: contentWidget,
           style: basicTextStyle(context).copyWith(
-            // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_HEADER_TEXT_COLOR,
             color: CupertinoColors.label.resolveFrom(context),
             fontSize: fontSize,
           ),

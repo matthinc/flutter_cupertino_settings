@@ -53,7 +53,6 @@ class CSLink extends StatelessWidget {
                   Text(
                     title,
                     style: basicTextStyle(context).copyWith(
-                      // color: _isDark(context) ? CupertinoColors.white : CS_TEXT_COLOR,
                       color: CupertinoColors.label.resolveFrom(context),
                       fontSize: titleFontSize,
                     ),
@@ -65,7 +64,6 @@ class CSLink extends StatelessWidget {
                     Text(
                       subtitle,
                       style: basicTextStyle(context).copyWith(
-                        // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
                         color: CupertinoColors.secondaryLabel.resolveFrom(context),
                         fontSize: subTitleFontSize,
                         fontWeight: FontWeight.w400,
@@ -80,7 +78,6 @@ class CSLink extends StatelessWidget {
               Text(
                 detail,
                 style: basicTextStyle(context).copyWith(
-                  // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
                   color: CupertinoColors.secondaryLabel.resolveFrom(context),
                   fontSize: titleFontSize,
                 ),
@@ -92,7 +89,6 @@ class CSLink extends StatelessWidget {
             trailing ??
                 Icon(
                   CupertinoIcons.right_chevron,
-                  // color: _isDark(context) ? CupertinoColors.lightBackgroundGray : CS_SUBTITLE_TEXT_COLOR_LIGHT,
                   color: CupertinoColors.secondaryLabel.resolveFrom(context),
                   size: 20,
                 ),

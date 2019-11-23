@@ -70,7 +70,7 @@ class CSSelectionState<T> extends State<CSSelection> {
               child: Text(
                 item.text,
                 style: TextStyle(
-                  color: _isDark(context) ? Colors.white : CS_TEXT_COLOR,
+                  color: CupertinoColors.label.resolveFrom(context),
                   fontSize: widget.fontSize,
                 ),
               ),
@@ -78,7 +78,7 @@ class CSSelectionState<T> extends State<CSSelection> {
             Icon(
               CupertinoIcons.check_mark,
               color: item.value == currentSelection
-                  ? _isDark(context) ? Colors.white : CS_CHECK_COLOR
+                  ? _isDark(context) ? Colors.white : CupertinoColors.activeBlue
                   : Colors.transparent,
               size: CS_CHECK_SIZE,
             ),
