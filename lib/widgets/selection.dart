@@ -57,6 +57,7 @@ class CSSelectionState<T> extends State<CSSelection> {
           if (item.value != currentSelection) {
             setState(() => currentSelection = item.value);
           }
+          Vibrate.feedback(FeedbackType.selection);
           onSelected(item.value);
         },
         pressedOpacity: 1.0,

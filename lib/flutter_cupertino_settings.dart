@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' show Colors, Theme;
 import 'package:flutter/cupertino.dart';
+import 'package:vibrate/vibrate.dart';
 
 part 'widgets/button.dart';
 part 'widgets/control.dart';
