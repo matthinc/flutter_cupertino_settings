@@ -1,12 +1,10 @@
 part of flutter_cupertino_settings;
 
 class CSSpacer extends StatelessWidget {
-  final Color backgroundColorDark;
   final bool showBorder;
 
   const CSSpacer({
     Key key,
-    this.backgroundColorDark = Colors.black12,
     this.showBorder = true,
   }) : super(key: key);
 

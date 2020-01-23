@@ -26,7 +26,8 @@ class CSSelection<T> extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => CSSelectionState<T>(items, currentSelection ?? items.first.value, onSelected);
+  State<StatefulWidget> createState() => CSSelectionState<T>(
+      items, currentSelection ?? items.first.value, onSelected);
 }
 
 /// [State] for [CSSelection]
@@ -44,7 +45,8 @@ class CSSelectionState<T> extends State<CSSelection> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: items.map<CSWidget>((item) => createItem(context, item)).toList(),
+      children:
+          items.map<CSWidget>((item) => createItem(context, item)).toList(),
     );
   }
 
@@ -76,7 +78,9 @@ class CSSelectionState<T> extends State<CSSelection> {
             ),
             Icon(
               CupertinoIcons.check_mark,
-              color: item.value == currentSelection ? CupertinoColors.activeBlue : Colors.transparent,
+              color: item.value == currentSelection
+                  ? CupertinoColors.activeBlue
+                  : const Color(0x00000000),
               size: CS_CHECK_SIZE,
             ),
           ],

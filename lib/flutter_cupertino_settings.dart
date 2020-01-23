@@ -3,7 +3,7 @@ library flutter_cupertino_settings;
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart' show Colors, Theme;
+import 'package:flutter/material.dart' show Theme;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 

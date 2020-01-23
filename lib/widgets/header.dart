@@ -4,12 +4,8 @@ part of flutter_cupertino_settings;
 /// The [title] attribute is optional.
 class CSHeader extends StatelessWidget {
   final String title;
-  final Color backgroundColorDark;
 
-  CSHeader(
-    this.title, {
-    this.backgroundColorDark = Colors.black12,
-  });
+  CSHeader(this.title);
 
   @override
   Widget build(BuildContext context) {

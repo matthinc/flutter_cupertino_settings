@@ -14,7 +14,7 @@ class CSLink extends StatelessWidget {
   final Widget trailing;
   final CellType cellType;
 
-  CSLink({
+  const CSLink({
     this.title,
     this.onPressed,
     this.subtitle,
@@ -30,10 +30,12 @@ class CSLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showSubtitle = (cellType == CellType.subtitleDetailStyle || cellType == CellType.subtitleStyle) &&
+    final showSubtitle = (cellType == CellType.subtitleDetailStyle ||
+            cellType == CellType.subtitleStyle) &&
         subtitle != null &&
         subtitle.isNotEmpty;
-    final showDetail = (cellType == CellType.subtitleDetailStyle || cellType == CellType.detailRightStyle) &&
+    final showDetail = (cellType == CellType.subtitleDetailStyle ||
+            cellType == CellType.detailRightStyle) &&
         detail != null &&
         detail.isNotEmpty;
 
@@ -64,7 +66,8 @@ class CSLink extends StatelessWidget {
                     Text(
                       subtitle,
                       style: basicTextStyle(context).copyWith(
-                        color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                        color:
+                            CupertinoColors.secondaryLabel.resolveFrom(context),
                         fontSize: subTitleFontSize,
                         fontWeight: FontWeight.w400,
                       ),
