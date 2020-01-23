@@ -8,8 +8,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
+    return CupertinoApp(
+      theme: CupertinoThemeData(
+        brightness: Brightness.dark,
+      ),
       home: HomeScreen(),
     );
   }
@@ -27,11 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cupertino Settings'),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: const Text('Cupertino Settings'),
       ),
-      body: CupertinoSettings(
+      child: CupertinoSettings(
         items: <Widget>[
           CSHeader('Brightness'),
           CSWidget(
@@ -62,7 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
             onSelected: (value) => setState(() => _index = value),
             currentSelection: _index,
           ),
-          CSDescription('Using Night mode extends battery life on devices with OLED display'),
+          CSDescription(
+              'Using Night mode extends battery life on devices with OLED display'),
           CSHeader(""),
           CSControl(
             name: 'Loading...',
