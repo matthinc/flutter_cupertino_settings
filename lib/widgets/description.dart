@@ -12,19 +12,12 @@ class CSDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(
-        10,
-        7.5,
-        5,
-        5,
-      ),
-      color: _isDark(context)
-          ? CupertinoColors.systemBackground.resolveFrom(context)
-          : CupertinoColors.secondarySystemBackground.resolveFrom(context),
+      padding: const EdgeInsets.fromLTRB(10, 7.5, 5, 5),
+      color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
       child: Text(
         description,
         style: basicTextStyle(context).copyWith(
-          color: CupertinoColors.secondaryLabel.resolveFrom(context),
+          color: CupertinoColors.tertiaryLabel.resolveFrom(context),
           fontSize: CS_DESCRIPTION_FONT_SIZE,
           height: 1.1,
         ),

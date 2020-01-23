@@ -60,9 +60,18 @@ class CSButton extends CSWidget {
 /// Defines different types for [CSButton]
 /// Specifies color and alignment
 class CSButtonType {
-  static const CSButtonType DESTRUCTIVE = CSButtonType(Colors.red, AlignmentDirectional.center);
-  static const CSButtonType DEFAULT = CSButtonType(Colors.blue, AlignmentDirectional.centerStart);
-  static const CSButtonType DEFAULT_CENTER = CSButtonType(Colors.blue, AlignmentDirectional.center);
+  static const CSButtonType DESTRUCTIVE = CSButtonType(
+    CupertinoColors.destructiveRed,
+    AlignmentDirectional.center,
+  );
+  static const CSButtonType DEFAULT = CSButtonType(
+    CupertinoColors.systemBlue,
+    AlignmentDirectional.centerStart,
+  );
+  static const CSButtonType DEFAULT_CENTER = CSButtonType(
+    CupertinoColors.systemBlue,
+    AlignmentDirectional.center,
+  );
 
   final Color color;
   final AlignmentGeometry alignment;

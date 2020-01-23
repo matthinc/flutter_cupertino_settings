@@ -46,13 +46,12 @@ class CSWidget extends StatelessWidget {
     return Container(
       alignment: alignment,
       decoration: BoxDecoration(
-        color: _isDark(context) ? CupertinoColors.secondarySystemBackground.resolveFrom(context) : CupertinoColors.systemBackground.resolveFrom(context),
-        // color: CupertinoColors.systemGroupedBackground,
+        color: CupertinoColors.secondarySystemGroupedBackground
+            .resolveFrom(context),
         border: Border(
           top: showTopBorder
               ? BorderSide(
-                  color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-                  width: _isDark(context) ? CS_BORDER_HEIGHT_DARK : CS_BORDER_HEIGHT_LIGHT,
+                  color: CupertinoColors.opaqueSeparator.resolveFrom(context),
                 )
               : BorderSide.none,
         ),
@@ -61,12 +60,12 @@ class CSWidget extends StatelessWidget {
       // height: height,
       padding: EdgeInsets.only(left: addPaddingToBorder ? padding.left : 0),
       child: Container(
-        padding: padding.copyWith(left: addPaddingToBorder ? 2 : padding.left + 2),
+        padding:
+            padding.copyWith(left: addPaddingToBorder ? 2 : padding.left + 2),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-              width: _isDark(context) ? CS_BORDER_HEIGHT_DARK : CS_BORDER_HEIGHT_LIGHT,
+              color: CupertinoColors.opaqueSeparator.resolveFrom(context),
             ),
           ),
         ),

@@ -15,12 +15,11 @@ class CSSpacer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 10.0, top: 20.0, bottom: 5.0),
       decoration: BoxDecoration(
-        color: _isDark(context) ? CupertinoColors.systemBackground.resolveFrom(context) : CupertinoColors.secondarySystemBackground.resolveFrom(context),
+        color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
         border: Border(
           bottom: showBorder
               ? BorderSide(
-                  color: _isDark(context) ? CupertinoColors.inactiveGray : CS_BORDER_COLOR,
-                  width: _isDark(context) ? CS_BORDER_HEIGHT_DARK : CS_BORDER_HEIGHT_LIGHT,
+                  color: CupertinoColors.opaqueSeparator.resolveFrom(context),
                 )
               : BorderSide.none,
         ),
