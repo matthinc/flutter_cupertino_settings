@@ -24,7 +24,10 @@ const double CS_SUBTITLE_FONT_SIZE = 11.0;
 const double CS_HEADER_FONT_SIZE = 14.0;
 const double CS_DESCRIPTION_FONT_SIZE = 13.0;
 const double CS_ITEM_NAME_SIZE = 15.0;
-const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(right: 10.0);
+const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(
+  right: 10.0,
+  left: 4,
+);
 const CSWidgetStyle CS_DEFAULT_STYLE = CSWidgetStyle();
 const double CS_CHECK_SIZE = 28.0;
 
