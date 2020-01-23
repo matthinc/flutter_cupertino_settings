@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             addPaddingToBorder: true,
           ),
           CSControl(
-            name: 'Auto brightness',
+            nameWidget: Text('Auto brightness'),
             contentWidget: CupertinoSwitch(
               value: _switch,
               onChanged: (bool value) => setState(() => _switch = value),
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const CSHeader(""),
           CSControl(
-            name: 'Loading...',
+            nameWidget: Text('Loading...'),
             contentWidget: const CupertinoActivityIndicator(),
           ),
           CSButton(CSButtonType.DEFAULT, "Licenses", () {
