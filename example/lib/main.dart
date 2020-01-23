@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: CSWidgetStyle(
               icon: Icon(FontAwesomeIcons.sun),
             ),
+            addPaddingToBorder: true,
           ),
           CSControl(
             name: 'Auto brightness',
@@ -54,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: CSWidgetStyle(
               icon: Icon(FontAwesomeIcons.sun),
             ),
+            addPaddingToBorder: false,
           ),
           CSHeader('Selection'),
           CSSelection<int>(
@@ -65,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
             currentSelection: _index,
           ),
           CSDescription(
-              'Using Night mode extends battery life on devices with OLED display'),
+            'Using Night mode extends battery life on devices with OLED display',
+          ),
           CSHeader(""),
           CSControl(
             name: 'Loading...',
