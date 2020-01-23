@@ -5,7 +5,7 @@ part of flutter_cupertino_settings;
 class CSHeader extends StatelessWidget {
   final String title;
 
-  CSHeader(this.title);
+  const CSHeader(this.title);
 
   @override
   Widget build(BuildContext context) {

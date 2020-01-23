@@ -18,7 +18,7 @@ class CSSelection<T> extends StatefulWidget {
   final T currentSelection;
   final double fontSize;
 
-  CSSelection({
+  const CSSelection({
     this.items,
     this.onSelected,
     this.currentSelection,
