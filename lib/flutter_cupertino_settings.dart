@@ -34,7 +34,7 @@ const double CS_CHECK_SIZE = 28.0;
 /// Event for [CSSelection]
 typedef void SelectionCallback(int selected);
 
-TextStyle basicTextStyle(BuildContext context) => Platform.isAndroid
+TextStyle basicTextStyle(BuildContext context) => Platform.isIOS
     ? CupertinoTheme.of(context).textTheme.textStyle
     : Theme.of(context).textTheme.subhead;
 
