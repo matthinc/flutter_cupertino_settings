@@ -11,19 +11,19 @@ class CSHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 10.0, top: 30.0, bottom: 5.0),
-      child: Text(
-        title.toUpperCase(),
-        style: basicTextStyle(context).copyWith(
-          color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: CS_HEADER_FONT_SIZE,
-        ),
-      ),
       decoration: BoxDecoration(
         color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
         border: Border(
           bottom: BorderSide(
             color: CupertinoColors.opaqueSeparator.resolveFrom(context),
           ),
+        ),
+      ),
+      child: Text(
+        title.toUpperCase(),
+        style: basicTextStyle(context).copyWith(
+          color: CupertinoColors.secondaryLabel.resolveFrom(context),
+          fontSize: CS_HEADER_FONT_SIZE,
         ),
       ),
     );

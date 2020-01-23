@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      theme: CupertinoThemeData(
+      theme: const CupertinoThemeData(
         brightness: Brightness.dark,
       ),
       home: HomeScreen(),
@@ -30,12 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Cupertino Settings'),
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Cupertino Settings'),
       ),
       child: CupertinoSettings(
         items: <Widget>[
-          CSHeader('Brightness'),
+          const CSHeader('Brightness'),
           CSWidget(
             CupertinoSlider(
               value: _slider,
@@ -57,27 +57,27 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             addPaddingToBorder: false,
           ),
-          CSHeader('Selection'),
+          const CSHeader('Selection'),
           CSSelection<int>(
-            items: [
+            items: const <CSSelectionItem<int>>[
               CSSelectionItem<int>(text: 'Day mode', value: 0),
               CSSelectionItem<int>(text: 'Night mode', value: 1),
             ],
             onSelected: (value) => setState(() => _index = value),
             currentSelection: _index,
           ),
-          CSDescription(
+          const CSDescription(
             'Using Night mode extends battery life on devices with OLED display',
           ),
-          CSHeader(""),
+          const CSHeader(""),
           CSControl(
             name: 'Loading...',
-            contentWidget: CupertinoActivityIndicator(),
+            contentWidget: const CupertinoActivityIndicator(),
           ),
           CSButton(CSButtonType.DEFAULT, "Licenses", () {
             print("It works!");
           }),
-          CSHeader(""),
+          const CSHeader(""),
           CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {}),
         ],
       ),

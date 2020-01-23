@@ -42,6 +42,7 @@ class CSLink extends StatelessWidget {
     return CSWidget(
       CupertinoButton(
         padding: EdgeInsets.zero,
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,7 +62,7 @@ class CSLink extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  if (showSubtitle) SizedBox(height: 2),
+                  if (showSubtitle) const SizedBox(height: 2),
                   if (showSubtitle)
                     Text(
                       subtitle,
@@ -87,7 +88,7 @@ class CSLink extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.clip,
               ),
-              SizedBox(width: 4),
+              const SizedBox(width: 4),
             ],
             trailing ??
                 Icon(
@@ -97,7 +98,6 @@ class CSLink extends StatelessWidget {
                 ),
           ],
         ),
-        onPressed: onPressed,
       ),
       style: style,
       addPaddingToBorder: addPaddingToBorder,

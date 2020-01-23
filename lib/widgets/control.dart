@@ -7,14 +7,13 @@ class CSControl extends CSWidget {
   final String name;
   final Widget contentWidget;
   final double fontSize;
-  final bool addPaddingToBorder;
 
   CSControl({
     this.name,
     this.contentWidget,
     CSWidgetStyle style = CS_DEFAULT_STYLE,
     this.fontSize = CS_TITLE_FONT_SIZE,
-    this.addPaddingToBorder = true,
+    bool addPaddingToBorder = true,
   }) : super(
           _ControlWidget(
             fontSize: fontSize,
@@ -51,11 +50,11 @@ class _ControlWidget extends StatelessWidget {
           ),
         ),
         DefaultTextStyle(
-          child: contentWidget,
           style: basicTextStyle(context).copyWith(
             color: CupertinoColors.label.resolveFrom(context),
             fontSize: fontSize,
           ),
+          child: contentWidget,
         ),
       ],
     );

@@ -26,7 +26,7 @@ const double CS_DESCRIPTION_FONT_SIZE = 13.0;
 const double CS_ITEM_NAME_SIZE = 15.0;
 const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(
   right: 10.0,
-  left: 4,
+  left: 4.0,
 );
 const CSWidgetStyle CS_DEFAULT_STYLE = CSWidgetStyle();
 const double CS_CHECK_SIZE = 28.0;
@@ -42,7 +42,7 @@ class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
 
-  CupertinoSettings({
+  const CupertinoSettings({
     @required this.items,
     this.shrinkWrap = false,
   });

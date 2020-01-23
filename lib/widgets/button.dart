@@ -38,6 +38,7 @@ class CSButton extends CSWidget {
               Expanded(
                 child: CupertinoButton(
                   padding: EdgeInsets.zero,
+                  onPressed: pressed,
                   child: Container(
                     alignment: buttonType.alignment,
                     child: Text(
@@ -48,7 +49,6 @@ class CSButton extends CSWidget {
                       ),
                     ),
                   ),
-                  onPressed: pressed,
                 ),
               ),
             ],

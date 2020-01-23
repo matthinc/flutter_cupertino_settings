@@ -12,7 +12,7 @@ class CSWidget extends StatelessWidget {
   final bool addPaddingToBorder;
   final bool showTopBorder;
 
-  CSWidget(
+  const CSWidget(
     this.widget, {
     this.alignment,
     this.height = CS_ITEM_HEIGHT,
@@ -32,8 +32,8 @@ class CSWidget extends StatelessWidget {
       child = Row(
         children: <Widget>[
           Container(
-            child: style.icon,
             padding: CS_ICON_PADDING,
+            child: style.icon,
           ),
           Expanded(child: widget)
         ],
@@ -56,12 +56,15 @@ class CSWidget extends StatelessWidget {
               : BorderSide.none,
         ),
       ),
-      constraints: BoxConstraints(minHeight: 42),
+      constraints: const BoxConstraints(minHeight: 42),
       // height: height,
-      padding: EdgeInsets.only(left: addPaddingToBorder ? padding.left : 0),
+      padding: EdgeInsets.only(
+        left: addPaddingToBorder ? padding.left : 0,
+      ),
       child: Container(
-        padding:
-            padding.copyWith(left: addPaddingToBorder ? 2 : padding.left + 2),
+        padding: padding.copyWith(
+          left: addPaddingToBorder ? 2 : padding.left + 2,
+        ),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(

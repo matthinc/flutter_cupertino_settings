@@ -13,7 +13,7 @@ part of flutter_cupertino_settings;
 /// onSelected(1)
 
 class CSSelection<T> extends StatefulWidget {
-  final List<CSSelectionItem> items;
+  final List<CSSelectionItem<T>> items;
   final void Function(T selected) onSelected;
   final T currentSelection;
   final double fontSize;
@@ -27,7 +27,10 @@ class CSSelection<T> extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => CSSelectionState<T>(
-      items, currentSelection ?? items.first.value, onSelected);
+        items,
+        currentSelection ?? items.first.value,
+        onSelected,
+      );
 }
 
 /// [State] for [CSSelection]
@@ -45,12 +48,11 @@ class CSSelectionState<T> extends State<CSSelection> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:
-          items.map<CSWidget>((item) => createItem(context, item)).toList(),
+      children: items.map<Widget>((item) => createItem(context, item)).toList(),
     );
   }
 
-  Widget createItem(BuildContext context, CSSelectionItem item) {
+  Widget createItem(BuildContext context, CSSelectionItem<T> item) {
     final isLastItem = items.last == item;
 
     return CSWidget(
@@ -98,7 +100,6 @@ class CSSelectionItem<T> {
   final bool showTopBorder;
 
   const CSSelectionItem({
-    Key key,
     this.value,
     this.text,
     this.showTopBorder = false,
