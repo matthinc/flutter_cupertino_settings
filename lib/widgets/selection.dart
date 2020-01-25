@@ -37,7 +37,7 @@ class CSSelection<T> extends StatefulWidget {
 class CSSelectionState<T> extends State<CSSelection> {
   T currentSelection;
   final void Function(T selected) onSelected;
-  final List<CSSelectionItem> items;
+  final List<CSSelectionItem<T>> items;
 
   CSSelectionState(
     this.items,
@@ -53,8 +53,6 @@ class CSSelectionState<T> extends State<CSSelection> {
   }
 
   Widget createItem(BuildContext context, CSSelectionItem<T> item) {
-    final isLastItem = items.last == item;
-
     return CSWidget(
       CupertinoButton(
         onPressed: () {
@@ -88,7 +86,7 @@ class CSSelectionState<T> extends State<CSSelection> {
           ],
         ),
       ),
-      addPaddingToBorder: !isLastItem,
+      addPaddingToBorder: items.last != item,
       showTopBorder: item.showTopBorder,
     );
   }
