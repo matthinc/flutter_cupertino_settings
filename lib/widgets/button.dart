@@ -20,31 +20,35 @@ part of flutter_cupertino_settings;
 /// 1) The button can be aligned
 /// 2) The entire row is touch-sensitive
 class CSButton extends CSWidget {
-  final CSButtonType type;
+  final CSButtonType buttonType;
   final String text;
   final VoidCallback pressed;
   final double fontSize;
 
-  CSButton(this.type, this.text, this.pressed,
-      {CSWidgetStyle style = CS_DEFAULT_STYLE, this.fontSize = CS_HEADER_FONT_SIZE})
-      : super(
+  CSButton(
+    this.buttonType,
+    this.text,
+    this.pressed, {
+    CSWidgetStyle style = CS_DEFAULT_STYLE,
+    this.fontSize = CS_TITLE_FONT_SIZE,
+  }) : super(
           Flex(
             direction: Axis.horizontal,
             children: <Widget>[
               Expanded(
                 child: CupertinoButton(
                   padding: EdgeInsets.zero,
+                  onPressed: pressed,
                   child: Container(
-                    alignment: type.alignment,
+                    alignment: buttonType.alignment,
                     child: Text(
                       text,
                       style: TextStyle(
-                        color: type.color,
+                        color: buttonType.color,
                         fontSize: fontSize,
                       ),
                     ),
                   ),
-                  onPressed: pressed,
                 ),
               ),
             ],
@@ -56,9 +60,18 @@ class CSButton extends CSWidget {
 /// Defines different types for [CSButton]
 /// Specifies color and alignment
 class CSButtonType {
-  static const CSButtonType DESTRUCTIVE = CSButtonType(Colors.red, AlignmentDirectional.center);
-  static const CSButtonType DEFAULT = CSButtonType(Colors.blue, AlignmentDirectional.centerStart);
-  static const CSButtonType DEFAULT_CENTER = CSButtonType(Colors.blue, AlignmentDirectional.center);
+  static const CSButtonType DESTRUCTIVE = CSButtonType(
+    CupertinoColors.destructiveRed,
+    AlignmentDirectional.center,
+  );
+  static const CSButtonType DEFAULT = CSButtonType(
+    CupertinoColors.systemBlue,
+    AlignmentDirectional.centerStart,
+  );
+  static const CSButtonType DEFAULT_CENTER = CSButtonType(
+    CupertinoColors.systemBlue,
+    AlignmentDirectional.center,
+  );
 
   final Color color;
   final AlignmentGeometry alignment;

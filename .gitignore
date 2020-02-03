@@ -3,6 +3,8 @@
 .idea
 .packages
 .pub/
+.dart_tool
+.vscode
 packages
 ios/
 pubspec.lock

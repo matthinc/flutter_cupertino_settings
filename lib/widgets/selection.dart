@@ -13,56 +13,65 @@ part of flutter_cupertino_settings;
 /// onSelected(1)
 
 class CSSelection<T> extends StatefulWidget {
-  final List<CSSelectionItem> items;
+  final List<CSSelectionItem<T>> items;
   final void Function(T selected) onSelected;
   final T currentSelection;
   final double fontSize;
 
-  CSSelection(
+  const CSSelection({
     this.items,
-    this.onSelected, {
+    this.onSelected,
     this.currentSelection,
-    this.fontSize = CS_HEADER_FONT_SIZE,
+    this.fontSize = CS_TITLE_FONT_SIZE,
   });
 
   @override
-  State<StatefulWidget> createState() {
-    return CSSelectionState<T>(items, currentSelection ?? items.first.value, onSelected);
-  }
+  State<StatefulWidget> createState() => CSSelectionState<T>(
+        items,
+        currentSelection ?? items.first.value,
+        onSelected,
+      );
 }
 
 /// [State] for [CSSelection]
 class CSSelectionState<T> extends State<CSSelection> {
   T currentSelection;
   final void Function(T selected) onSelected;
-  final List<CSSelectionItem> items;
+  final List<CSSelectionItem<T>> items;
 
-  CSSelectionState(this.items, this.currentSelection, this.onSelected);
+  CSSelectionState(
+    this.items,
+    this.currentSelection,
+    this.onSelected,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: items.map<CSWidget>((item) => createItem(context, item)).toList(),
+      children: items.map<Widget>((item) => createItem(context, item)).toList(),
     );
   }
 
-  Widget createItem(BuildContext context, CSSelectionItem item) {
+  Widget createItem(BuildContext context, CSSelectionItem<T> item) {
     return CSWidget(
       CupertinoButton(
         onPressed: () {
           if (item.value != currentSelection) {
             setState(() => currentSelection = item.value);
-            onSelected(item.value);
           }
+          HapticFeedback.selectionClick();
+          onSelected(item.value);
         },
         pressedOpacity: 1.0,
+        padding: const EdgeInsets.fromLTRB(4, 1, 2, 1),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               child: Text(
                 item.text,
                 style: TextStyle(
-                  color: _isDark(context) ? Colors.white : CS_TEXT_COLOR,
+                  color: CupertinoColors.label.resolveFrom(context),
                   fontSize: widget.fontSize,
                 ),
               ),
@@ -70,13 +79,15 @@ class CSSelectionState<T> extends State<CSSelection> {
             Icon(
               CupertinoIcons.check_mark,
               color: item.value == currentSelection
-                  ? _isDark(context) ? Colors.white : CS_CHECK_COLOR
-                  : Colors.transparent,
+                  ? CupertinoColors.activeBlue
+                  : const Color(0x00000000),
               size: CS_CHECK_SIZE,
             ),
           ],
         ),
       ),
+      addPaddingToBorder: items.last != item,
+      showTopBorder: item.showTopBorder,
     );
   }
 }
@@ -84,10 +95,11 @@ class CSSelectionState<T> extends State<CSSelection> {
 class CSSelectionItem<T> {
   final T value;
   final String text;
+  final bool showTopBorder;
 
   const CSSelectionItem({
-    Key key,
     this.value,
     this.text,
+    this.showTopBorder = false,
   });
 }
