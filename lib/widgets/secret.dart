@@ -6,12 +6,14 @@ class CSSecret extends StatefulWidget {
   final String secret;
   final double fontSize;
   final CSWidgetStyle style;
+  final bool addPaddingToBorder;
 
   CSSecret(
     this.text,
     this.secret, {
     this.style = CS_DEFAULT_STYLE,
-    this.fontSize = CS_HEADER_FONT_SIZE,
+    this.fontSize = CS_TITLE_FONT_SIZE,
+    this.addPaddingToBorder = true,
   });
 
   @override
@@ -24,38 +26,34 @@ class _CSSecretState extends State<CSSecret> {
   @override
   Widget build(BuildContext context) {
     return CSWidget(
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            widget.text,
-            style: TextStyle(
-              color: _isDark(context) ? CupertinoColors.extraLightBackgroundGray : CS_TEXT_COLOR,
-              fontSize: widget.fontSize,
+      DefaultTextStyle(
+        style: basicTextStyle(context).copyWith(
+          color: CupertinoColors.label.resolveFrom(context),
+          fontSize: widget.fontSize,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(widget.text),
+            Row(
+              children: <Widget>[
+                Text(
+                  _show ? widget.secret : RenderEditable.obscuringCharacter * widget.secret.length,
+                ),
+                CupertinoButton(
+                  child: Icon(
+                    CupertinoIcons.eye_solid,
+                    size: CS_CHECK_SIZE,
+                  ),
+                  onPressed: () => setState(() => _show = !_show),
+                ),
+              ],
             ),
-          ),
-          Row(
-            children: <Widget>[
-              Text(
-                _show ? widget.secret : RenderEditable.obscuringCharacter * widget.secret.length,
-                style: TextStyle(
-                  color: _isDark(context) ? CupertinoColors.extraLightBackgroundGray : CS_TEXT_COLOR,
-                  fontSize: widget.fontSize,
-                ),
-              ),
-              CupertinoButton(
-                child: Icon(
-                  CupertinoIcons.eye_solid,
-                  color: _isDark(context) ? CupertinoColors.extraLightBackgroundGray : Colors.black26,
-                  size: CS_CHECK_SIZE,
-                ),
-                onPressed: () => setState(() => _show = !_show),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
       style: widget.style,
+      addPaddingToBorder: widget.addPaddingToBorder,
     );
   }
 }

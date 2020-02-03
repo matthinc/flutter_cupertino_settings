@@ -78,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             print("It works!");
           }),
           const CSHeader(""),
+          CSSecret("Your Password", "Hello World"),
           CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {}),
         ],
       ),
