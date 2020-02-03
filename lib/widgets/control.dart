@@ -4,27 +4,29 @@ part of flutter_cupertino_settings;
 /// extends [CSWidget]
 /// Provides the correct paddings and text properties
 class CSControl extends CSWidget {
-  final String name;
+  final Widget nameWidget;
   final Widget contentWidget;
   final double fontSize;
 
-  CSControl(
-    this.name,
-    this.contentWidget, {
+  CSControl({
+    this.nameWidget,
+    this.contentWidget,
     CSWidgetStyle style = CS_DEFAULT_STYLE,
-    this.fontSize = CS_HEADER_FONT_SIZE,
+    this.fontSize = CS_TITLE_FONT_SIZE,
+    bool addPaddingToBorder = true,
   }) : super(
           _ControlWidget(
             fontSize: fontSize,
             contentWidget: contentWidget,
-            name: name,
+            nameWidget: nameWidget,
           ),
           style: style,
+          addPaddingToBorder: addPaddingToBorder,
         );
 }
 
 class _ControlWidget extends StatelessWidget {
-  final String name;
+  final Widget nameWidget;
   final Widget contentWidget;
   final double fontSize;
 
@@ -32,23 +34,23 @@ class _ControlWidget extends StatelessWidget {
     Key key,
     this.fontSize,
     this.contentWidget,
-    this.name,
+    this.nameWidget,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          name,
-          style: TextStyle(
-            color: _isDark(context) ? null : CS_TEXT_COLOR,
-            fontSize: fontSize,
-          ),
-        ),
-        contentWidget
-      ],
+    return DefaultTextStyle(
+      style: basicTextStyle(context).copyWith(
+        color: CupertinoColors.label.resolveFrom(context),
+        fontSize: fontSize,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          if (nameWidget != null) nameWidget,
+          if (contentWidget != null) contentWidget,
+        ],
+      ),
     );
   }
 }

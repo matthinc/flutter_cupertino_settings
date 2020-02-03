@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 
@@ -8,8 +8,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light(),
+    return CupertinoApp(
+      theme: const CupertinoThemeData(
+        brightness: Brightness.dark,
+      ),
       home: HomeScreen(),
     );
   }
@@ -27,59 +29,55 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cupertino Settings'),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Cupertino Settings'),
       ),
-      body: CupertinoSettings(
+      child: CupertinoSettings(
         items: <Widget>[
-          CSHeader('Brightness'),
+          const CSHeader('Brightness'),
           CSWidget(
             CupertinoSlider(
               value: _slider,
-              onChanged: (double value) {
-                setState(() {
-                  _slider = value;
-                });
-              },
+              onChanged: (double value) => setState(() => _slider = value),
             ),
             style: CSWidgetStyle(
               icon: Icon(FontAwesomeIcons.sun),
             ),
+            addPaddingToBorder: true,
           ),
           CSControl(
-            'Auto brightness',
-            CupertinoSwitch(
+            nameWidget: Text('Auto brightness'),
+            contentWidget: CupertinoSwitch(
               value: _switch,
-              onChanged: (bool value) {
-                setState(() {
-                  _switch = value;
-                });
-              },
+              onChanged: (bool value) => setState(() => _switch = value),
             ),
-            style: CSWidgetStyle(icon: Icon(FontAwesomeIcons.sun)),
+            style: CSWidgetStyle(
+              icon: Icon(FontAwesomeIcons.sun),
+            ),
+            addPaddingToBorder: false,
           ),
-          CSHeader('Selection'),
+          const CSHeader('Selection'),
           CSSelection<int>(
-            [
+            items: const <CSSelectionItem<int>>[
               CSSelectionItem<int>(text: 'Day mode', value: 0),
               CSSelectionItem<int>(text: 'Night mode', value: 1),
             ],
-            (value) {
-              setState(() {
-                _index = value;
-              });
-            },
+            onSelected: (value) => setState(() => _index = value),
             currentSelection: _index,
           ),
-          CSDescription('Using Night mode extends battery life on devices with OLED display'),
-          CSSecret("API Key", "My Scret Key"),
-          CSHeader(""),
-          CSControl('Loading...', CupertinoActivityIndicator()),
+          const CSDescription(
+            'Using Night mode extends battery life on devices with OLED display',
+          ),
+          const CSHeader(""),
+          CSControl(
+            nameWidget: Text('Loading...'),
+            contentWidget: const CupertinoActivityIndicator(),
+          ),
           CSButton(CSButtonType.DEFAULT, "Licenses", () {
             print("It works!");
           }),
-          CSHeader(""),
+          const CSHeader(""),
           CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", () {}),
         ],
       ),
