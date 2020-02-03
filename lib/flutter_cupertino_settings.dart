@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' show Theme;
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 part 'widgets/button.dart';
@@ -12,6 +13,7 @@ part 'widgets/control.dart';
 part 'widgets/description.dart';
 part 'widgets/header.dart';
 part 'widgets/link.dart';
+part 'widgets/secret.dart';
 part 'widgets/selection.dart';
 part 'widgets/spacer.dart';
 part 'widgets/widget.dart';
