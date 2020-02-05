@@ -50,9 +50,9 @@ CupertinoSettings(
 );
 ```
 
-![](https://abload.de/img/screenshot2018-05-02a00u3w.png)
+![](screenshots/scr1.png)
 
-![](https://abload.de/img/dark3xk0b.png)
-![](https://abload.de/img/lightu5k1a.png)
-
-Dark theme & example by [AppleEducate](https://github.com/appleeducate)
+### Contributors
+- Dark theme & example by [AppleEducate](https://github.com/appleeducate)
+- CSSecret by [SimonIT](https://github.com/SimonIT)
+- iOS 13 support by [Tim Bierbaum](https://github.com/bierbaumtim)
