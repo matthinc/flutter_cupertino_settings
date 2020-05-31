@@ -7,6 +7,7 @@ class CSSecret extends StatefulWidget {
   final double fontSize;
   final CSWidgetStyle style;
   final bool addPaddingToBorder;
+  final String obscuringCharacter;
 
   CSSecret(
     this.text,
@@ -14,6 +15,7 @@ class CSSecret extends StatefulWidget {
     this.style = CS_DEFAULT_STYLE,
     this.fontSize = CS_TITLE_FONT_SIZE,
     this.addPaddingToBorder = true,
+    this.obscuringCharacter = '•',
   });
 
   @override
@@ -38,7 +40,7 @@ class _CSSecretState extends State<CSSecret> {
             Row(
               children: <Widget>[
                 Text(
-                  _show ? widget.secret : RenderEditable.obscuringCharacter * widget.secret.length,
+                  _show ? widget.secret : widget.obscuringCharacter * widget.secret.length,
                 ),
                 CupertinoButton(
                   child: Icon(
