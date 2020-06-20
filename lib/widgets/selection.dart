@@ -12,7 +12,7 @@ part of flutter_cupertino_settings;
 ///
 /// onSelected(1)
 
-class CSSelection<T> extends StatefulWidget {
+class CSSelection<T> extends StatelessWidget {
   final List<CSSelectionItem<T>> items;
   final void Function(T selected) onSelected;
   final T currentSelection;
@@ -26,26 +26,6 @@ class CSSelection<T> extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => CSSelectionState<T>(
-        items,
-        currentSelection ?? items.first.value,
-        onSelected,
-      );
-}
-
-/// [State] for [CSSelection]
-class CSSelectionState<T> extends State<CSSelection> {
-  T currentSelection;
-  final void Function(T selected) onSelected;
-  final List<CSSelectionItem<T>> items;
-
-  CSSelectionState(
-    this.items,
-    this.currentSelection,
-    this.onSelected,
-  );
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: items.map<Widget>((item) => createItem(context, item)).toList(),
@@ -56,9 +36,6 @@ class CSSelectionState<T> extends State<CSSelection> {
     return CSWidget(
       CupertinoButton(
         onPressed: () {
-          if (item.value != currentSelection) {
-            setState(() => currentSelection = item.value);
-          }
           HapticFeedback.selectionClick();
           onSelected(item.value);
         },
@@ -72,7 +49,7 @@ class CSSelectionState<T> extends State<CSSelection> {
                 item.text,
                 style: TextStyle(
                   color: CupertinoColors.label.resolveFrom(context),
-                  fontSize: widget.fontSize,
+                  fontSize: fontSize,
                 ),
               ),
             ),
