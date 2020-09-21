@@ -76,12 +76,15 @@ class CSSelectionState<T> extends State<CSSelection> {
                 ),
               ),
             ),
-            Icon(
-              CupertinoIcons.check_mark,
-              color: item.value == currentSelection
-                  ? CupertinoColors.activeBlue
-                  : const Color(0x00000000),
-              size: CS_CHECK_SIZE,
+            Padding(
+              padding: const EdgeInsets.only(right: 5.0),
+              child: Icon(
+                CupertinoIcons.check_mark,
+                color: item.value == currentSelection
+                    ? CupertinoColors.activeBlue
+                    : const Color(0x00000000),
+                size: CS_CHECK_SIZE,
+              ),
             ),
           ],
         ),

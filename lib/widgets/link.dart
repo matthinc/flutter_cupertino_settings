@@ -90,12 +90,17 @@ class CSLink extends StatelessWidget {
               ),
               const SizedBox(width: 4),
             ],
-            trailing ??
-                Icon(
-                  CupertinoIcons.right_chevron,
-                  color: CupertinoColors.secondaryLabel.resolveFrom(context),
-                  size: 20,
-                ),
+            Padding(
+              padding: const EdgeInsets.only(left: 1.0, right: 2.0),
+              child: trailing ??
+                  Icon(
+                    CupertinoIcons.right_chevron,
+                    color: CupertinoColors.secondaryLabel
+                        .resolveFrom(context)
+                        .withOpacity(0.4),
+                    size: CS_CHEVRON_SIZE,
+                  ),
+            ),
           ],
         ),
       ),
