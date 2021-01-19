@@ -1,4 +1,9 @@
-## [0.3.0] - iOS 13 SUpport
+## [0.4.0]
+* Allow to use library in web #26
+* Update cupertino_icons to 1.0.0 #24
+* Remove state from CSSelection widget #22
+
+## [0.3.0] - iOS 13 Support
 
 * added support for the different types of CSLink based on UITableViewCell
 * use CupertinoDynamicColors to match the official DynamicColors added with iOS13
