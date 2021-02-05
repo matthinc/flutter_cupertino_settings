@@ -33,6 +33,21 @@ class CSSelection<T> extends StatelessWidget {
   }
 
   Widget createItem(BuildContext context, CSSelectionItem<T> item) {
+    final text = Text(item.text,
+        style: TextStyle(
+          color: CupertinoColors.label.resolveFrom(context),
+          fontSize: fontSize,
+        ));
+    final textWidget = item.subtitle == null
+        ? text
+        : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            text,
+            SizedBox(height: 2),
+            Text(item.subtitle,
+                style: basicTextStyle(context).copyWith(
+                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                    fontSize: CS_HEADER_FONT_SIZE))
+          ]);
     return CSWidget(
       CupertinoButton(
         onPressed: () {
@@ -40,19 +55,11 @@ class CSSelection<T> extends StatelessWidget {
           onSelected(item.value);
         },
         pressedOpacity: 1.0,
-        padding: const EdgeInsets.fromLTRB(4, 1, 2, 1),
+        padding: const EdgeInsets.fromLTRB(4, 8, 2, 8),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-              child: Text(
-                item.text,
-                style: TextStyle(
-                  color: CupertinoColors.label.resolveFrom(context),
-                  fontSize: fontSize,
-                ),
-              ),
-            ),
+            Expanded(child: textWidget),
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
               child: Icon(
@@ -75,11 +82,13 @@ class CSSelection<T> extends StatelessWidget {
 class CSSelectionItem<T> {
   final T value;
   final String text;
+  final String subtitle;
   final bool showTopBorder;
 
   const CSSelectionItem({
     this.value,
     this.text,
+    this.subtitle,
     this.showTopBorder = false,
   });
 }
