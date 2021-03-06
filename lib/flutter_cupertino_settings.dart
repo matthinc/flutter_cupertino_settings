@@ -46,9 +46,11 @@ TextStyle basicTextStyle(BuildContext context) => kIsWeb
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
+  final ScrollController scrollController;
 
   const CupertinoSettings({
     @required this.items,
+    this.scrollController,
     this.shrinkWrap = false,
   });
 
@@ -62,6 +64,7 @@ class CupertinoSettings extends StatelessWidget {
             ? ListView.builder(
                 shrinkWrap: shrinkWrap,
                 itemCount: items.length,
+                controller: scrollController,
                 itemBuilder: (BuildContext context, int index) => items[index],
               )
             : Column(
@@ -70,6 +73,7 @@ class CupertinoSettings extends StatelessWidget {
                     child: ListView.builder(
                       shrinkWrap: shrinkWrap,
                       itemCount: items.length,
+                      controller: scrollController,
                       itemBuilder: (BuildContext context, int index) =>
                           items[index],
                     ),
