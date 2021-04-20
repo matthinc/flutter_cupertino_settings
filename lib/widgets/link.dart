@@ -3,19 +3,19 @@ part of flutter_cupertino_settings;
 /// Provides a button for navigation
 class CSLink extends StatelessWidget {
   final String title;
-  final String subtitle;
-  final String detail;
-  final VoidCallback onPressed;
+  final String? subtitle;
+  final String? detail;
+  final VoidCallback? onPressed;
   final double titleFontSize;
   final double subTitleFontSize;
   final CSWidgetStyle style;
   final bool addPaddingToBorder;
   final bool showTopBorder;
-  final Widget trailing;
+  final Widget? trailing;
   final CellType cellType;
 
   const CSLink({
-    this.title,
+    required this.title,
     this.onPressed,
     this.subtitle,
     this.detail,
@@ -33,11 +33,11 @@ class CSLink extends StatelessWidget {
     final showSubtitle = (cellType == CellType.subtitleDetailStyle ||
             cellType == CellType.subtitleStyle) &&
         subtitle != null &&
-        subtitle.isNotEmpty;
+        subtitle!.isNotEmpty;
     final showDetail = (cellType == CellType.subtitleDetailStyle ||
             cellType == CellType.detailRightStyle) &&
         detail != null &&
-        detail.isNotEmpty;
+        detail!.isNotEmpty;
 
     return CSWidget(
       CupertinoButton(
@@ -65,7 +65,7 @@ class CSLink extends StatelessWidget {
                   if (showSubtitle) const SizedBox(height: 2),
                   if (showSubtitle)
                     Text(
-                      subtitle,
+                      subtitle!,
                       style: basicTextStyle(context).copyWith(
                         color:
                             CupertinoColors.secondaryLabel.resolveFrom(context),
@@ -80,7 +80,7 @@ class CSLink extends StatelessWidget {
             ),
             if (showDetail) ...[
               Text(
-                detail,
+                detail!,
                 style: basicTextStyle(context).copyWith(
                   color: CupertinoColors.secondaryLabel.resolveFrom(context),
                   fontSize: titleFontSize,

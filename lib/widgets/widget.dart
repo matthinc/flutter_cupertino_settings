@@ -6,7 +6,7 @@ part of flutter_cupertino_settings;
 /// The optional [style] attribute allows to specify a style (e.g. an Icon)
 class CSWidget extends StatelessWidget {
   final Widget widget;
-  final AlignmentGeometry alignment;
+  final AlignmentGeometry? alignment;
   final double height;
   final CSWidgetStyle style;
   final bool addPaddingToBorder;
@@ -80,7 +80,7 @@ class CSWidget extends StatelessWidget {
 
 /// Defines style attributes that can be applied to every [CSWidget]
 class CSWidgetStyle {
-  final Icon icon;
+  final Icon? icon;
 
   const CSWidgetStyle({this.icon});
 }

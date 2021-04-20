@@ -37,19 +37,21 @@ const double CS_CHEVRON_SIZE = 17.0;
 /// Event for [CSSelection]
 typedef void SelectionCallback(int selected);
 
-TextStyle basicTextStyle(BuildContext context) => kIsWeb
-    ? Theme.of(context).textTheme.subhead
-    : Platform.isIOS
-        ? CupertinoTheme.of(context).textTheme.textStyle
-        : Theme.of(context).textTheme.subhead;
+TextStyle basicTextStyle(BuildContext context) =>
+    (kIsWeb
+        ? Theme.of(context).textTheme.subtitle2
+        : Platform.isIOS
+            ? CupertinoTheme.of(context).textTheme.textStyle
+            : Theme.of(context).textTheme.subtitle2) ??
+    TextStyle();
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
 
   const CupertinoSettings({
-    @required this.items,
+    required this.items,
     this.scrollController,
     this.shrinkWrap = false,
   });

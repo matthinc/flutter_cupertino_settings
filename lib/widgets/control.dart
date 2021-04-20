@@ -4,8 +4,8 @@ part of flutter_cupertino_settings;
 /// extends [CSWidget]
 /// Provides the correct paddings and text properties
 class CSControl extends CSWidget {
-  final Widget nameWidget;
-  final Widget contentWidget;
+  final Widget? nameWidget;
+  final Widget? contentWidget;
   final double fontSize;
 
   CSControl({
@@ -26,12 +26,12 @@ class CSControl extends CSWidget {
 }
 
 class _ControlWidget extends StatelessWidget {
-  final Widget nameWidget;
-  final Widget contentWidget;
-  final double fontSize;
+  final Widget? nameWidget;
+  final Widget? contentWidget;
+  final double? fontSize;
 
   const _ControlWidget({
-    Key key,
+    Key? key,
     this.fontSize,
     this.contentWidget,
     this.nameWidget,
@@ -47,8 +47,8 @@ class _ControlWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          if (nameWidget != null) nameWidget,
-          if (contentWidget != null) contentWidget,
+          if (nameWidget != null) nameWidget!,
+          if (contentWidget != null) contentWidget!,
         ],
       ),
     );
