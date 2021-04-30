@@ -4,7 +4,7 @@ class CSSpacer extends StatelessWidget {
   final bool showBorder;
 
   const CSSpacer({
-    Key key,
+    Key? key,
     this.showBorder = true,
   }) : super(key: key);
 
