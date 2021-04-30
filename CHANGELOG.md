@@ -1,3 +1,8 @@
+## [0.5.0]
+* NULL safety
+* Allow a scroll controller to be specified
+* Support subtitle for selection lists
+
 ## [0.4.0]
 * Allow to use library in web #26
 * Update cupertino_icons to 1.0.0 #24
