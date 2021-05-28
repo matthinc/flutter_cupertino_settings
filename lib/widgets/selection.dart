@@ -33,6 +33,7 @@ class CSSelection<T> extends StatelessWidget {
   }
 
   Widget createItem(BuildContext context, CSSelectionItem<T> item) {
+
     final text = Text(item.text,
         style: TextStyle(
           color: CupertinoColors.label.resolveFrom(context),
@@ -48,6 +49,11 @@ class CSSelection<T> extends StatelessWidget {
                     color: CupertinoColors.secondaryLabel.resolveFrom(context),
                     fontSize: CS_HEADER_FONT_SIZE))
           ]);
+
+    final labelWidget = item.widget == null
+        ? textWidget
+        : item.widget!;
+
     return CSWidget(
       CupertinoButton(
         onPressed: () {
@@ -59,7 +65,7 @@ class CSSelection<T> extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Expanded(child: textWidget),
+            Expanded(child: labelWidget),
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
               child: Icon(
@@ -83,12 +89,14 @@ class CSSelectionItem<T> {
   final T value;
   final String text;
   final String? subtitle;
+  final Widget? widget;
   final bool showTopBorder;
 
   const CSSelectionItem({
     required this.value,
-    required this.text,
+    this.text = '',
     this.subtitle,
+    this.widget,
     this.showTopBorder = false,
   });
 }
